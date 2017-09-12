@@ -1,0 +1,162 @@
+                       MVDSV-features supported by Oztf
+                       ================================
+
+Oztf 1.45 offers several new features when used incombination with mvdsv 0.14 
+or later. Oztf now also supports mvdsv's server-side demo-recording features, 
+however you will need full access rights to use the commands.
+
+This document will list and describe all the new mvd-specific commands and cmds as
+well as the localinfos that are used by the server.
+
+The notation used in the commands described herein uses the common
+Unix semantics in specifying if a parameter is optional or required:
+
+  - Any parameter description enclosed with < ... > is required.
+  - Any parameter description enclosed with [ ... ] is optional.
+
+
+
+
+=========================
+Contents of this document
+=========================
+
+- CMDs: cmd adminpwd [admin pasword]
+        cmd dl <#>
+        cmd dlist
+        cmd timelimit <time>
+        cmd prematch <time>
+        cmd fraglimit <time>
+        cmd teamplay <teamplay>
+        cmd overtime <time>
+        cmd cft <time>
+        cmd password <password>
+        cmd map <mapname>
+        cmd record <demoname>
+	cmd easyrecord [demoname]
+	cmd autorecord [# games left]
+	cmd cancel
+	cmd stop
+        cmd kick  
+        cmd help or list (list of commands)
+
+
+=====
+CMDs
+=====
+
+
+----------------------------------
+cmd adminpwd [password]
+----------------------------------
+
+example: cmd adminpwd john
+example: setinfo adminpwd john 
+
+
+----------------------------
+cmd kick <id/name [reason]> 
+----------------------------
+
+This will cycle the admin deal command. It will ask you if you wish to kick the current player shown or cycle next.
+
+example: cmd kick
+         next
+         kick
+
+------------------
+cmd map <mapname>
+------------------
+
+This allows map change for admins not from map's list
+
+example: cmd map 2fort5r
+
+
+----------------------
+cmd record <demoname>
+----------------------
+
+This is how you record a server-side .mvd-demo. If there is already a name with the
+specified name, it will be overwritten. If a demo is recorded, this can be seen in
+the serverinfo, as well as how the demo is called.
+
+example: cmd record pug-well6
+
+
+
+--------------------------
+cmd easyrecord [demoname]
+--------------------------
+
+This will record a server-side .mvd-demo. If no demoname is specified a name will be
+chosen with the name stating whether it was a duel or team game, the team names and
+the map. If a demoname is specified, it will be used, if a demo with the specified
+name already exists, a suffix will be appended to the demoname. If a demo is recorded, 
+this can be seen in the serverinfo, as well as how the demo is called.
+
+example: cmd easyrecord      - If team red plays team blue on dm3, the server will 
+                                then record a demo called clan_red_vs_blue_[bam4].mvd.
+
+
+------------------------------
+cmd autorecord [# games left]
+------------------------------
+
+This command can be used to toggle automatic recording of server-side demos. If
+no parameter is specified, this command will turn automatic recording off. If 
+automatic recording was turned on before, it will be turned off. However, if automatic 
+recording was switched off before, issueing "cmd autorecord" will have the same 
+the effect like "cmd autorecord 1", it wlll automatically record the next game and
+switch off automatic recording after that. If a number of demos to be automatically
+recorded is specified, (demo_auto_left) each match will be recorded until the value
+reaches zero. be used. Any value smaller than 1 will turn automatic recording off.
+
+The automatic recording procedure works like this: the mod will automatically issue 
+the easyrecord command when the countdown starts and issue the "cmd stop" command when
+the game is over as well as decrease the number of demos to be recorded automatically
+by 1. If the countdown is aborted, no demo will be saved and the counter of how many 
+demos are left to be automatically recorded will not be changed, however once the 
+match started, the demo will be saved, even if the match is aborted and the demo 
+counter will be decreased by one. If a demo is recorded, this can be seen in the 
+serverinfo, as well as how the demo is called.
+
+examples:  cmd autorecord        - If automatic demo recording was turned off, it
+                                    will be turned on for one game. If it was 
+                                    turned on, it will be turned off.
+           cmd autorecord 5      - This will automatically record the following 5
+                                    games into .mvd-demos (each in a separate demo 
+                                    of course), if the localinfo demo_auto_left_max
+                                    allows for that many automatically recorded
+                                    demos, otherwise the number will be limited to
+                                    the value of said localinfo.
+
+
+-----------
+cmd dl <#>
+-----------
+
+This will download the demo with the specified number, you can find out which demo
+is represented by which number by using the "cmd dlist" command. On non-KTeams Pro
+servers you can also use "cmd demolist" to view the demolist.
+
+example: cmd dl 4                - This will make you download the .mvd-demo with the 
+                                    number 4. 
+
+
+-----------
+cmd cancel
+-----------
+
+This will abort any server-side demo recording, discarding the recorded demo.
+
+example: cmd cancel
+
+
+---------
+cmd stop
+---------
+
+This will stop any server-side demo recording, saving the recorded demo.
+
+example: cmd stop

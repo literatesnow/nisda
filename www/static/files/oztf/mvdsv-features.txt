@@ -1,0 +1,112 @@
+OZTF 1.45  - 30/6/2003
+
+
+short info about new mod-side server commands
+You can use it with rcon or in server console
+
+modsv commands added:
+
+prematch
+overtime
+rounds
+cft
+gspeed
+round_time
+
+info
+svinfo
+autorecord
+password
+restart
+startmatch
+break
+clan
+practice
+tfstrike
+tfvsdm
+duel
+teamfrags
+fullts
+reset
+clansetup
+fbskins
+frj
+silence
+grapple
+ceasefire
+freeze
+speedcap
+flash
+flag_model
+grenpacks
+gibs
+highlander
+lights
+detpack
+pipedelay
+grentype
+sgfire
+sgtype
+time
+commands
+
+
+---------
+commands
+---------
+list of commands
+
+
+---------
+prematch
+---------
+this sets the prematch time in minutes
+
+
+---------
+overtime
+---------
+this sets the overtime in minutes
+
+
+----
+cft
+----
+this sets the cease fire time in minutes
+
+
+---------------------
+info [key value [\]]
+---------------------
+this command allows check/set/remove specified server localinfo
+examples:
+info x
+Infokey x = ""
+
+info x he he
+Localinfo "x" set to "he he"
+
+info x \
+Localinfo "x" removed
+
+
+-----------------------
+svinfo [key value [\]]
+-----------------------
+this command allows check/set/remove specified serverinfo
+examples:
+
+svinfo hostname
+Serverinfo hostname = "ktpro test"
+
+svinfo hostname huh, testing svinfo
+Serverinfo "hostname" set to "huh, testing svinfo"
+
+svinfo hostname  \
+Serverinfo "hostname" removed
+
+
+--------
+restart
+--------
+this one just reloads current map

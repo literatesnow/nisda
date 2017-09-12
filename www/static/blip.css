@@ -1,0 +1,179 @@
+html,body {
+  font-family: verdana, arial, helvetica, sans-serif;
+  font-size: 1em;
+  margin: 0em;
+  padding: 0em;
+  color: #000000;
+  background-color: #ffffff;
+}
+
+h1 {
+  margin: 0em;
+  padding: 0em 0em 0em 0.2em;
+  font-size: 1.4em;
+  font-weight: bold;
+  border-left: 0.5em double #c8d6ff;
+}
+h2 {
+  margin: 0em 0em 1em 0em;
+  padding: 0.2em 0em 0.3em 0.2em;
+  font-size: 1.2em;
+  font-weight: bold;
+  border-left: 0.5em double #c8d6ff;
+}
+h3 {
+  padding: 0em 0em 0em 0.2em;
+  font-size: 1em;
+  font-weight: bold;
+}
+h4 {
+  padding: 0em 0em 0em 0.2em;
+  font-size: 0.9em;
+  font-weight: bold;
+}
+
+a:link {
+  color: #3c6aec;
+}
+
+a:visited {
+  color: #26469f;
+}
+
+#top {
+  padding: 1em 0em 1em 1em;
+  border-bottom: 1em double #c8d6ff;
+  background-color: #e4ebff;
+  color: #000000;
+}
+
+#left {
+  float: left;
+  width: 10em;
+}
+
+#center {
+  margin: 0.8em 0.8em 0.8em 10em;
+  max-width: 55em;
+}
+
+.logo {
+  margin: 0em;
+  padding: 0em 0em 0em 0.2em;
+  font-size: 1.6em;
+  font-weight: bold;
+  border-left: 0.5em double #c8d6ff;
+}
+.logo a {
+  color: #000000;
+  text-decoration: none;
+}
+
+.catchline {
+  font-size: small;
+  font-style: italic;
+}
+
+.box {
+  margin: 0.8em;
+  padding: 0.8em;
+  background-color: #e4ebff;
+  color: #000000;
+  border: 0.05em solid #c8d6ff;
+}
+
+.box form {
+  margin: 0em 0em 1em 0em;
+  padding: 0em;
+}
+
+.content {
+  margin: 0em 0em 0.8em 0em;
+  padding: 0.8em;
+  border: 0.05em solid #c8d6ff;
+}
+
+.blocktext {
+  font-size: 0.8em;
+}
+
+.quote {
+  font-family: courier new, arial, helvetica, sans-serif;
+  font-size: 0.8em;
+  color: #000000;
+  background-color: #ffffff;
+}
+
+.footer {
+  margin: 1em 0em 0em 0em;
+}
+
+.history td {
+  font-size: small;
+  vertical-align: top; 
+  padding: 0em 0.5em 0em 0em;
+}
+
+.projects td {
+  vertical-align: top; 
+  padding: 0em 0.5em 0em 0em;
+}
+
+.screenshot {
+  margin: 0em;
+  padding: 0em;
+}
+.screenshot img {
+  border: 0em;
+  max-width: 100%;
+  max-height: 100%;
+}
+.screenshot .caption {
+  font-style: italic;
+}
+
+.qwshot {
+  margin: 0em;
+  padding: 0em;
+}
+.qwshot img {
+  border: 0em;
+}
+.qwshot .caption {
+  font-style: italic;
+}
+.qwleft {
+  float: left;
+  margin: 0em 1em 0em 0em;
+}
+
+.oneup {
+  margin: 1em 0em 0em 0em;
+}
+
+.ht {
+}
+
+.hm {
+  margin: 0em 0em 0.2em 0em;
+}
+
+.hs {
+  margin: 0em 0em 0em 0.5em;
+}
+
+.centerimage {
+  display: block;
+  margin: 0em auto 0em auto;
+  padding: 0em;
+  max-width: 100%;
+  max-height: 100%;
+}
+
+.codetext {
+  font-family: courier new, arial, helvetica, sans-serif;
+  font-size: 0.9em;
+  background-color: #eeeeee;
+  vertical-align: middle;
+}
+

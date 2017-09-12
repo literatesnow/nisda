@@ -1,0 +1,98 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+  <head>
+  <title>Chris :: Personified - QuakeWorld Location Reporter</title>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta name="author" content="Chris">
+  <meta name="generator" CONTENT="vim7">
+  <link rel="stylesheet" href="blip.css" type="text/css">
+  </head>
+
+  <body>
+    <div id="top">
+      <div class="logo"><a href="/">Chris</a></div>
+
+      <div class="catchline">Digitally Remastered For Success</div>
+    </div>
+
+    <div id="left">
+      <div class="box">
+        <div class="ht"><a href="/">Main</a></div>
+      </div>
+
+      <div class="box">
+        <div class="hm">Projects</div>
+
+        <div class="hs"><a href="superfluous.html">Superfluous</a></div>
+        <div class="hs"><a href="arise.html">Arise</a></div>
+        <div class="hs"><a href="fizz.html">Fizz</a></div>
+        <div class="hs"><a href="watcher.html">Watcher</a></div>
+        <div class="hs"><a href="crank.html">crank</a></div>
+        <div class="hs"><a href="raddns.html">RadDNS</a></div>
+        <div class="hs"><a href="personified.html">Personified</a></div>
+      </div>
+
+      <div class="box">
+        <div class="hm">Games</div>
+
+        <div class="hs"><a href="quake.html">Quake</a></div>
+        <div class="hs"><a href="battlefield.html">Battlefield</a></div>
+      </div>
+
+      <div class="box">
+        <div class="ht"><a href="source.html">Source Code</a></div>
+        <div class="ht"><a href="contact.html">Contact</a></div>
+      </div>
+
+      <div class="box">
+        <img class="centerimage" src="images/lemming.png" alt="Lemming">
+      </div>
+    </div>
+
+    <div id="center">
+      <div class="content">
+        <h1><a name="personified">Personified</a></h1>
+      </div>
+
+      <div class="content">
+        Personified is a QuakeWorld Location Reporter, players on the same team connect to a personification server and they can see the location and details of the other players there. We originally had:
+        <p class="codetext">
+        bind "x" "say_team $\report location"<br>
+        msg_trigger reportloc "report location" -l t<br>
+        alias reportloc "say_team I'm at %l (%a/%h)"
+        </p>
+      This worked well, but it takes up chat space and often other people would have the trigger that you didn't need to know about. Older clients also do not have msg_trigger.
+
+        <h3>Supported Clients</h3>
+        <ul>
+          <li>FuhQuake 0.31 GL</li>
+          <li>FuhQuake 0.31 Soft</li>
+          <li>MoreQuakeWorld 0.96 GL</li>
+          <li>MoreQuakeWorld 0.96 GL2</li>
+          <li>MoreQuakeWorld 0.96 Soft</li>
+          <li>MoreQuakeWorld 0.96 Soft2</li>
+          <li>GreyMQuake 0.11s GL</li>
+          <li>QuakeWorld 2.33 GL</li>
+          <li>QuakeWorld 2.33 Soft</li>
+        </ul>
+
+        <h3>Download</h3>
+        <a href="files/personified-v1.25.zip">personified-v1.25.zip</a>, 78KB<br>
+        <a href="source.html#personified">Source code</a>
+
+        <h3>History</h3>
+        <table class="history">
+          <tr><td>v1.25</td><td>2004-07-21</td><td>Rewrote detection and fixed mqwcl</td></tr>
+          <tr><td>v1.22</td><td>2004-07-12</td><td>First public release</td></tr>
+          <tr><td>v1.00</td><td>2004-06-13</td><td>Initial Release (private)</td></tr>
+        </table>
+
+        <div class="footer">
+          Language: C.<br>
+        Personified and Personification are my first UDP client/server modelled after QuakeWorld (of course). In addition, personified is basically a memory hook, after it identifies the Quake process it reads out certain memory locations and does something useful with the information. Unlike many programs which abuse hooking memory, instead I created a team play enhancement to Quake.
+        </div>
+      </div>
+    </div>
+  </body>
+
+</html>

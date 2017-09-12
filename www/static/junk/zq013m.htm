@@ -1,0 +1,862 @@
+<HTML>
+<HEAD>
+
+<TITLE>ZQuake User Manual</TITLE>
+<META NAME="Author" CONTENT="bliP">
+<META NAME="Generator" CONTENT="Notepad">
+<META NAME="Keywords" CONTENT="zquake, manual, help, console, commands, readme">
+<META NAME="Contents" CONTENT="Official ZQuake user manual, help file">
+<STYLE TYPE="text/css">
+<!--
+A { text-decoration: none; }
+-->
+</STYLE>
+</HEAD>
+
+<BODY BGCOLOR="#FFFFFF" ALINK="#FF0000" LINK="#0000FF" VLINK="#0000FF">
+<FONT FACE="Verdana" COLOR="#000000" SIZE=2>
+
+<CENTER>
+  <FONT SIZE="+2" COLOR="#000080">ZQuake User Manual</FONT><BR>
+  &lt;<A HREF="http://zquake.frag.ru" TARGET="_blank">ZQuake 0.13dev build 780</A>&gt;<BR>
+  <FONT COLOR="#000080">25 March 2002</FONT>
+</CENTER>
+
+<P>
+
+<A NAME="contents"><FONT SIZE="3" COLOR="#000080"><B>Contents</B></FONT></A><P>
+
+<A HREF="#listing">CVar/Command Listing:</A> <A HREF="#client">Client</A> <A HREF="#server">Server</A><BR>
+<A HREF="#clientnew">New/Modified Client CVar/Commands</A><BR>
+<A HREF="#servernew">New/Modified Server Commands</A><BR>
+<A HREF="#teamplay">Teamplay</A><BR>
+&nbsp; <A HREF="#macros">List of Macros</A><BR>
+&nbsp; <A HREF="#funcharconv">Fun Character Conversion</A><BR>
+<A HREF="#otherfeatures">Other Features</A><BR>
+&nbsp; <A HREF="#cvarexpansion">CVar Expansion</A><BR>
+&nbsp; <A HREF="#msg_triggerexp">Message Catcher System</A><BR>
+&nbsp; <A HREF="#keysinconsole">Key Use in Console</A><BR>
+&nbsp; <A HREF="#demos">Demos</A><BR>
+&nbsp; <A HREF="#cmdlineparam">Command-Line Parameters</A><BR>
+&nbsp; <A HREF="#f_reply">f_version and z_version</A><BR>
+&nbsp; <A HREF="#tfcheatprot">TF Cheats Protection</A><BR>
+&nbsp; <A HREF="#customentfiles">Server Custom Ent Files</A><BR>
+<A HREF="#contacts">Contacts</A><P>
+
+<A NAME="listing"><FONT SIZE="3" COLOR="#000080"><B>CVar/Command Listing</B></FONT></A><P>
+
+<A NAME="client"><FONT SIZE="2" COLOR="#000080"><B>Client:</B></FONT></A><BR>
+<A HREF="#_z_cmd">_z_cmd</A>, 
+<A HREF="#aliaslist">aliaslist</A>, 
+<A HREF="#bindlist">bindlist</A>, 
+<A HREF="#cl_bonusflash">cl_bonusflash</A>, 
+<A HREF="#cl_c2spps">cl_c2spps</A>, 
+<A HREF="#cl_c2simpulsebackup">cl_c2simpulsebackup</A>, 
+<A HREF="#cl_chatmode">cl_chatmode</A>, 
+<A HREF="#cl_chatsound">cl_chatsound</A>, 
+<A HREF="#cl_clock">cl_clock</A>, 
+<A HREF="#cl_clock_x">cl_clock_x</A>, 
+<A HREF="#cl_clock_y">cl_clock_y</A>, 
+<A HREF="#cl_deadbodyfilter">cl_deadbodyfilter</A>, 
+<A HREF="#cl_demopinginterval">cl_demopinginterval</A>, 
+<A HREF="#cl_demospeed">cl_demospeed</A>, 
+<A HREF="#cl_explosion">cl_explosion</A>, 
+<A HREF="#cl_filterdrawviewmodel">cl_filterdrawviewmodel</A>, 
+<A HREF="#cl_gibfilter">cl_gibfilter</A>, 
+<A HREF="#cl_keypad">cl_keypad</A>, 
+<A HREF="#cl_muzzleflash">cl_muzzleflash</A>, 
+<A HREF="#cl_nofake">cl_nofake</A>, 
+<A HREF="#cl_oldpl">cl_oldpl</A>, 
+<A HREF="#cl_parsesay">cl_parsesay</A>, 
+<A HREF="#cl_parsewhitetext">cl_parsewhitetext</A>, 
+<A HREF="#cl_r2g">cl_r2g</A>, 
+<A HREF="#cl_staticsounds">cl_staticsounds</A>, 
+<A HREF="#cl_triggers">cl_triggers</A>, 
+<A HREF="#cl_trueLightning">cl_trueLightning</A>, 
+<A HREF="#cmdlist">cmdlist</A>, 
+<A HREF="#con_notifylines">con_notifylines</A>, 
+<A HREF="#con_notifytime">con_notifytime</A>, 
+<A HREF="#contrast">contrast</A>, 
+<A HREF="#crosshair">crosshair</A>, 
+<A HREF="#cvarlist">cvarlist</A>, 
+<A HREF="#default_fov">default_fov</A>, 
+<A HREF="#easyrecord">easyrecord</A>, 
+<A HREF="#enemycolor">enemycolor</A>, 
+<A HREF="#enemyskin">enemyskin</A>, 
+<A HREF="#filter">filter</A>, 
+<A HREF="#if">if</A>, 
+<A HREF="#gl_conalpha">gl_conalpha</A>, 
+<A HREF="#gl_contrast">gl_contrast</A>, 
+<A HREF="#gl_gamma">gl_gamma</A>, 
+<A HREF="#gl_fb_bmodels">gl_fb_bmodels</A>, 
+<A HREF="#gl_fb_depthhack">gl_fb_depthhack</A>, 
+<A HREF="#gl_fb_models">gl_fb_models</A>, 
+<A HREF="#impulse">impulse</A>, 
+<A HREF="#inc">inc</A>, 
+<A HREF="#loadloc">loadloc</A>, 
+<A HREF="#macrolist">macrolist</A>, 
+<A HREF="#mapname">mapname</A>, 
+<A HREF="#msg_trigger">msg_trigger</A>, 
+<A HREF="#playdemo">playdemo</A>, 
+<A HREF="#qizmo_dir">qizmo_dir</A>, 
+<A HREF="#r_drawflame">r_drawflame</A>, 
+<A HREF="#r_drawviewmodel">r_drawviewmodel</A>, 
+<A HREF="#r_fastsky">r_fastsky</A>, 
+<A HREF="#r_fullbrightskins">r_fullbrightskins</A>, 
+<A HREF="#r_grenadetrail">r_grenadetrail</A>, 
+<A HREF="#r_powerupglow">r_powerupglow</A>, 
+<A HREF="#r_rocketlight">r_rocketlight</A>, 
+<A HREF="#r_rockettrail">r_rockettrail</A>, 
+<A HREF="#r_skycolor">r_skycolor</A>, 
+<A HREF="#s_khz">s_khz</A>, 
+<A HREF="#scr_centermenu">scr_centermenu</A>, 
+<A HREF="#scr_centersbar">scr_centersbar</A>, 
+<A HREF="#scr_consize">scr_consize</A>, 
+<A HREF="#screenshot">screenshot</A>, 
+<A HREF="#set">set</A>, 
+<A HREF="#show_speed">show_speed</A>, 
+<A HREF="#teamcolor">teamcolor</A>, 
+<A HREF="#teamskin">teamskin</A>, 
+<A HREF="#toggle">toggle</A>, 
+<A HREF="#tp_forcetriggers">tp_forcetriggers</A>, 
+<A HREF="#tp_loadlocs">tp_loadlocs</A>, 
+<A HREF="#tp_name_item">tp_name_<I>item</I></A>, 
+<A HREF="#tp_need_item">tp_need_<I>item</I></A>, 
+<A HREF="#tp_pickup">tp_pickup</A>, 
+<A HREF="#tp_point">tp_point</A>, 
+<A HREF="#tp_soundtrigger">tp_soundtrigger</A>, 
+<A HREF="#tp_took">tp_took</A>, 
+<A HREF="#unalias">unalias</A>, 
+<A HREF="#unaliasall">unaliasall</A>, 
+<A HREF="#v_contentblend">v_contentblend</A>, 
+<A HREF="#v_damagecshift">v_damagecshift</A>, 
+<A HREF="#v_dlightcshift">v_dlightcshift</A>, 
+<A HREF="#v_gunkick">v_gunkick</A>, 
+<A HREF="#v_pentcshift">v_pentcshift</A>, 
+<A HREF="#v_quadcshift">v_quadcshift</A>, 
+<A HREF="#v_ringcshift">v_ringcshift</A>, 
+<A HREF="#v_suitcshift">v_suitcshift</A>, 
+<A HREF="#vid_hwgammacontrol">vid_hwgammacontrol</A>, 
+<A HREF="#viewalias">viewalias</A>, 
+<A HREF="#writeconfig">writeconfig</A>
+<P>
+
+<A NAME="server"><FONT SIZE="2" COLOR="#000080"><B>Server:</B></FONT></A><BR>
+<A HREF="#devmap">devmap</A>, 
+<A HREF="#kick">kick</A>, 
+<A HREF="#sv_cheats">sv_cheats</A>, 
+<A HREF="#sv_loadentfiles">sv_loadentfiles</A>, 
+<A HREF="#sv_maxrate">sv_maxrate</A>, 
+<A HREF="#sv_nailhack">sv_nailhack</A>, 
+<A HREF="#maxfps">serverinfo maxfps</A>, 
+<A HREF="#cheats">cheats</A>
+<P>
+
+<A NAME="clientnew"><FONT SIZE="3" COLOR="#000080"><B>New/Modified Client CVar/Commands</B></FONT></A><P>
+
+<A NAME="_z_cmd"><B>_z_cmd</B></A> <SMALL>[<A HREF="#contents">Cont.</A> <A HREF="#listing">List.</A>]</SMALL><BR>
+Execute commands which will only run in ZQuake.<P>
+
+Example:<BR>
+_z_cmd exec zquake.cfg<P>
+
+<A NAME="aliaslist"><B>aliaslist</B></A> <SMALL>[<A HREF="#contents">Cont.</A> <A HREF="#listing">List.</A>]</SMALL><BR>
+List all aliases.<P>
+
+<A NAME="bindlist"><B>bindlist</B></A> <SMALL>[<A HREF="#contents">Cont.</A> <A HREF="#listing">List.</A>]</SMALL><BR>
+Lists all key bindings.<P>
+
+<A NAME="crosshair"><B>crosshair [0-6]</B></A> <SMALL>[<A HREF="#contents">Cont.</A> <A HREF="#listing">List.</A>]</SMALL><BR>
+A mini crosshair (color of crosshaircolor, of course).<P>
+
+<A NAME="cl_bonusflash"><B>cl_bonusflash [0,1]</B></A> <SMALL>[<A HREF="#contents">Cont.</A> <A HREF="#listing">List.</A>]</SMALL><BR>
+Turn on/off the weapon/item pickup flash.<P>
+
+<A NAME="cl_c2spps"><B>cl_c2spps</B></A> <SMALL>[<A HREF="#contents">Cont.</A> <A HREF="#listing">List.</A>]</SMALL><BR>
+Packet filtering (a la Qizmo's .c2spps command). Use this to reduce network traffic if you're playing on a 28800 (or worse) connection and can't set cl_maxfps 72 because it causes lags.<BR>
+The recommended settings are cl_maxfps 72 and cl_c2spps 30.<BR>
+Note that if you're playing on a buggy 2.30 server, the increase of fps may result in "failing" jumps when you bunny-hop. The best would be to get zqwsv or KT 2.20 installed on the server; if that's impossible, you'll have to cap your fps with cl_maxfps (try cl_maxfps 50 or 30).<P>
+
+<A NAME="cl_c2simpulsebackup"><B>cl_c2simpulsebackup [0..3] (default 3)</B></A> <SMALL>[<A HREF="#contents">Cont.</A> <A HREF="#listing">List.</A>]</SMALL><BR>
+Used with <A HREF="#cl_c2spps">cl_c2spps</A>, it controls how many backup copies of packets with non-zero impulses are to be sent to the server. The recommended value is 3, but you can try 2 or even 1 to reduce traffic if you don't have any packet loss.<P>
+
+<A NAME="cl_chatmode"><B>cl_chatmode [0-2]</B></A> <SMALL>[<A HREF="#contents">Cont.</A> <A HREF="#listing">List.</A>]</SMALL><BR>
+Console chat mode.<BR>
+• 0 - text in the console is always treated as a command and in order to chat you have to use messagemode/messagemode2 or use the say/say_team commands<BR>
+• 1 - everything you type in the console goes into chat, in order to issue a command, prefix it with a slash (/)<BR>
+• 2 - if the first word in the line is a command, it is executed, otherwise the line is sent as chat<P>
+
+<A NAME="cl_chatsound"><B>cl_chatsound [0-2]</B></A> <SMALL>[<A HREF="#contents">Cont.</A> <A HREF="#listing">List.</A>]</SMALL><BR>
+Chat sound (the beep when someone says something).<BR>
+• 0 - all off<BR>
+• 1 - all on<BR>
+• 2 - team chat only<P>
+
+<A NAME="cl_clock"><B>cl_clock [0-2] (default 0)</B></A> <SMALL>[<A HREF="#contents">Cont.</A> <A HREF="#listing">List.</A>]</SMALL><BR>
+A clock.<BR>
+• 0 - off<BR>
+• 1 - shows the time you spent on server (you'll also see it in the status bar when you press TAB)<BR>
+• 2 - shows the time of day<P>
+
+<A NAME="cl_clock_x"><B>cl_clock_x</B></A> <SMALL>[<A HREF="#contents">Cont.</A> <A HREF="#listing">List.</A>]</SMALL><BR>
+Horizontal coordinates of the clock.<P>
+
+<A NAME="cl_clock_y"><B>cl_clock_y</B></A> <SMALL>[<A HREF="#contents">Cont.</A> <A HREF="#listing">List.</A>]</SMALL><BR>
+Vertical coordinates of the clock.<BR>
+If &lt; 0, the coordinates are calculated from bottom up, e.g. -1 means the screen line just above the scoreboard.<P>
+
+<A NAME="cl_deadbodyfilter"><B>cl_deadbodyfilter [0,1] (default 0)</B></A> <SMALL>[<A HREF="#contents">Cont.</A> <A HREF="#listing">List.</A>]</SMALL><BR>
+If 1, corpses are not drawn.  This helps the FPS somewhat, not to mention your concentration. In TeamFortress feigning spies are hidden.<P>
+
+<A NAME="cl_demopinginterval"><B>cl_demopinginterval (default 5)</B></A> <SMALL>[<A HREF="#contents">Cont.</A> <A HREF="#listing">List.</A>]</SMALL><BR>
+How often to request ping updates when recording demos. 0 disables automatic ping requests.<BR>
+This variable doesn't affect ping updates when the scoreboard is shown (they are always one update per 2 seconds).<P>
+
+<A NAME="cl_demospeed"><B>cl_demospeed [0.1-10] </B></A> <SMALL>[<A HREF="#contents">Cont.</A> <A HREF="#listing">List.</A>]</SMALL><BR>
+Changes speed of demo playback.<P>
+
+<A NAME="cl_explosion"><B>cl_explosion [0-3, 6-8]</B></A> <SMALL>[<A HREF="#contents">Cont.</A> <A HREF="#listing">List.</A>]</SMALL><BR>
+Changes standard explosions to less fps-hogging ones.<BR>
+• 0 - normal (default )<BR>
+• 1 - no particles<BR>
+• 2 - no dynamic lighting<BR>
+• 3 - no particles, no dynamic lighting<BR>
+• 6 - teleport<BR>
+• 7 - blood<BR>
+• 8 - bigblood<P>
+
+<A NAME="cl_filterdrawviewmodel"><B>cl_filterdrawviewmodel [0,1]</B></A> <SMALL>[<A HREF="#contents">Cont.</A> <A HREF="#listing">List.</A>]</SMALL><BR>
+Prevents r_drawviewmodel from being changed by Rocket Arena servers.<P>
+
+<A NAME="cl_gibfilter"><B>cl_gibfilter [0,1] (default 0)</B></A> <SMALL>[<A HREF="#contents">Cont.</A> <A HREF="#listing">List.</A>]</SMALL><BR>
+If 1, gibs are turned off.<P>
+
+<A NAME="cl_keypad"><B>cl_keypad [0,1] (default 1)</B></A> <SMALL>[<A HREF="#contents">Cont.</A> <A HREF="#listing">List.</A>]</SMALL><BR>
+If 1, you will be able to bind such keys as capslock, numlock, and all numpad keys. 0 is QW compatibility where the keypad keys act the same key name, eg KP_8 acts like uparrow would.<P>
+The full listing is:
+
+<TABLE BORDER=1 CELLSPACING=1 CELLPADDING=2 WIDTH=50%>
+<TR><TD><FONT SIZE=2><B>Key Name</B></FONT></TD><TD><FONT SIZE=2><B>Alternative Name</B></FONT></TD></TR>
+<TR><TD><FONT SIZE=2>CAPSLOCK</FONT></TD></TR>
+<TR><TD><FONT SIZE=2>KP_NUMLOCK</FONT></TD><TD><FONT SIZE=2>NUMLOCK</FONT></TD></TR>
+<TR><TD><FONT SIZE=2>KP_SLASH</FONT></TD></TR>
+<TR><TD><FONT SIZE=2>KP_STAR</FONT></TD></TR>
+<TR><TD><FONT SIZE=2>KP_MINUS</FONT></TD></TR>
+<TR><TD><FONT SIZE=2>KP_HOME</FONT></TD><TD><FONT SIZE=2>KP_1</FONT></TD></TR>
+<TR><TD><FONT SIZE=2>KP_UPARROW</FONT></TD><TD><FONT SIZE=2>KP_2</FONT></TD></TR>
+<TR><TD><FONT SIZE=2>KP_PGUP</FONT></TD><TD><FONT SIZE=2>KP_3</FONT></TD></TR>
+<TR><TD><FONT SIZE=2>KP_PLUS</FONT></TD></TR>
+<TR><TD><FONT SIZE=2>KP_LEFTARROW</FONT></TD><TD><FONT SIZE=2>KP_4</FONT></TD></TR>
+<TR><TD><FONT SIZE=2>KP_5</FONT></TD></TR>
+<TR><TD><FONT SIZE=2>KP_RIGHTARROW</FONT></TD><TD><FONT SIZE=2>KP_6</FONT></TD></TR>
+<TR><TD><FONT SIZE=2>KP_END</FONT></TD><TD><FONT SIZE=2>KP_7</FONT></TD></TR>
+<TR><TD><FONT SIZE=2>KP_DOWNARROW</FONT></TD><TD><FONT SIZE=2>KP_8</FONT></TD></TR>
+<TR><TD><FONT SIZE=2>KP_PGDN</FONT></TD><TD><FONT SIZE=2>KP_9</FONT></TD></TR>
+<TR><TD><FONT SIZE=2>KP_ENTER</FONT></TD></TR>
+<TR><TD><FONT SIZE=2>KP_INS</FONT></TD><TD><FONT SIZE=2>KP_0</FONT></TD></TR>
+<TR><TD><FONT SIZE=2>KP_DEL</FONT></TD></TR>
+</TABLE><P>
+
+<A NAME="cl_muzzleflash"><B>cl_muzzleflash [0-2]</B></A> <SMALL>[<A HREF="#contents">Cont.</A> <A HREF="#listing">List.</A>]</SMALL><BR>
+"Muzzleflash" (the flashes when a gun is shot)<BR>
+• 0 - all turned off<BR>
+• 1 - all turned on (default )<BR>
+• 2 - own's flash off, all other on<P>
+
+<A NAME="cl_nofake"><B>cl_nofake [0-2]</B></A> <SMALL>[<A HREF="#contents">Cont.</A> <A HREF="#listing">List.</A>]</SMALL><BR>
+1 disables "fake" messages sent by other players. It replaces all line feed (0x0A) and carriage return (0x0D) characters with a space symbol.<BR>
+A value of 2 disables fake messages from enemies only, so 2 is suggested. But ZQuake cannot be sure who exactly sent the message when there is, for a example, a guy named "unnamed" in your team and "(unnamed)" in the enemy team, because a messsage from (unnamed) and a team message from unnamed will look identically. In this case ZQuake will "unfake" messages from both players.<P>
+
+<A NAME="cl_oldpl"><B>cl_oldpl [0,1]</B></A> <SMALL>[<A HREF="#contents">Cont.</A> <A HREF="#listing">List.</A>]</SMALL><BR>
+Use 0 to disable the new PL calculation algorithm.<P>
+
+<A NAME="cl_parsesay"><B>cl_parsesay (default 0)</B></A> <SMALL>[<A HREF="#contents">Cont.</A> <A HREF="#listing">List.</A>]</SMALL><BR>
+If 1, you can use macros such as %l, %d %a, %h etc. <A HREF="#macros">List of Macros</A>.<P>
+
+<A NAME="cl_parsewhitetext"><B>cl_parsewhitetext [0-2] (default 1)</B></A> <SMALL>[<A HREF="#contents">Cont.</A> <A HREF="#listing">List.</A>]</SMALL><BR>
+Convert text between { and } to white or not in chat/team chat.<BR>
+• 0 - convert none<BR>
+• 1 - convert all (chat and team chat)<BR>
+• 2 - convert team chat only<P>
+
+Example:<BR>
+cl_parsewhitetext 1<BR>
+say this text is red<BR>
+say {this text is white}<P>
+
+<A NAME="cl_r2g"><B>cl_r2g [0,1]</B></A> <SMALL>[<A HREF="#contents">Cont.</A> <A HREF="#listing">List.</A>]</SMALL><BR>
+If 1, converts all rockets to grenades.<P>
+
+<A NAME="cl_staticsounds"><B>cl_staticsounds [0,1] (default 1)</B></A> <SMALL>[<A HREF="#contents">Cont.</A> <A HREF="#listing">List.</A>]</SMALL><BR>
+Set this to disable static sounds.<BR>
+Note that that you must reconnect or restart the map for it to take effect.<P>
+
+<A NAME="cl_triggers"><B>cl_triggers [0,1] (default 0)</B></A> <SMALL>[<A HREF="#contents">Cont.</A> <A HREF="#listing">List.</A>]</SMALL><BR>
+If 1, then special aliases can be executed, or triggered, when something happens.<P>
+
+Aliases:<BR>
+f_respawn - triggered when you are (re)spawned.<BR>
+f_death - triggered when you die.<BR>
+f_flagdeath - when you die with a flag in TeamFortress.<BR>
+f_mapend - triggered when the intermission screen is brought up.<BR>
+f_newmap - triggered when a new map is entered.<BR>
+f_spawn - executed after the first frame on a new map is rendered.<BR>
+f_took - called when you pick up an item in teamplay (use the <A HREF="#tp_took">tp_took</A> command to specify what items should trigger this alias).<BR>
+f_weaponchange - called when you change your weapon (except in cases when you die or respawn).<P>
+
+Examples:<BR>
+alias f_respawn "say_team respawned at %l"<BR>
+alias f_death "say_team died at %d"<BR>
+alias f_flagdeath "say_team enemy flag lost at %d!"<BR>
+alias f_mapend "stop; screenshot"<BR>
+alias f_spawn "easyrecord"<BR>
+alias f_newmap "cl_warncmd 0; exec mapcfg/$mapname.cfg; cl_warncmd 1"<BR>
+alias f_took "say_team took %i"<BR>
+alias f_weaponchange "echo I'm using %w"<P>
+
+<A NAME="cl_truelightning"><B>cl_truelightning [0..1] (default 0)</B></A> <SMALL>[<A HREF="#contents">Cont.</A> <A HREF="#listing">List.</A>]</SMALL><BR>
+Smoothes out shaft movement, 0 means no smoothing at all, 1 - 100% smoothing; a value of about 0.5 is recommended for modem players.<P>
+
+<A NAME="cmdlist"><B>cmdlist</B></A> <SMALL>[<A HREF="#contents">Cont.</A> <A HREF="#listing">List.</A>]</SMALL><BR>
+List all commands.<P>
+
+<A NAME="con_notifylines"><B>con_notifylines (default 4)</B></A> <SMALL>[<A HREF="#contents">Cont.</A> <A HREF="#listing">List.</A>]</SMALL><BR>
+Number of console messages displayed at top of screen.<P>
+
+<A NAME="con_notifytime"><B>con_notifytime (default 3)</B></A> <SMALL>[<A HREF="#contents">Cont.</A> <A HREF="#listing">List.</A>]</SMALL><BR>
+How long console messages stay on screen.<P>
+
+<A NAME="contrast"><B>contrast (default 1)</B></A> <SMALL>[<A HREF="#contents">Cont.</A> <A HREF="#listing">List.</A>]</SMALL><BR>
+Screen brightness in software mode.<P>
+
+<A NAME="cvarlist"><B>cvarlist</B></A> <SMALL>[<A HREF="#contents">Cont.</A> <A HREF="#listing">List.</A>]</SMALL><BR>
+List all console variables (also known as CVars)<BR>
+It also prints each CVar's flags:<BR>
+* - archived variable (m_pitch, name..)<BR>
+u - userinfo (name, bottomcolor..)<BR>
+s - serverinfo (deathmatch, hostname..)<P>
+
+<A NAME="default_fov"><B>default_fov</B></A> <SMALL>[<A HREF="#contents">Cont.</A> <A HREF="#listing">List.</A>]</SMALL><BR>
+Very useful in TeamFortress, and other mods that reset your fov when you spawn to 90. Basically, when the server sends you "fov 90", your fov is set to default_fov.<P>
+
+<A NAME="easyrecord"><B>easyrecord</B></A> <SMALL>[<A HREF="#contents">Cont.</A> <A HREF="#listing">List.</A>]</SMALL><BR>
+Record demos without worrying about the filename. See <A HREF="#demos">also</A>.<P>
+
+<A NAME="enemycolor"><B>enemycolor [color]</B></A> <SMALL>[<A HREF="#contents">Cont.</A> <A HREF="#listing">List.</A>]</SMALL><BR>
+Overrides the colour of enemies. Disabled in TeamFortress.<P>
+
+<A NAME="enemyskin"><B>enemyskin [skin.pcx]</B></A> <SMALL>[<A HREF="#contents">Cont.</A> <A HREF="#listing">List.</A>]</SMALL><BR>
+Overrides the skins of enemies. Disabled in TeamFortress.<P>
+
+<A NAME="filter"><B>filter [#filtername]</B></A> <SMALL>[<A HREF="#contents">Cont.</A> <A HREF="#listing">List.</A>]</SMALL><BR>
+Message filtering system. Only team messages are filtered.<BR>
+Use <B>filter</B> with no parameters to list current filters and <B>filter clear</B> to remove all filters.<P>
+
+Example:<BR>
+filter #a<BR>
+say_team i can see this message #a<BR>
+say_team i can't see this message #d<P>
+
+<A NAME="if"><B>if &lt;expr1&gt; &lt;op&gt; &lt;expr2&gt; [then] command [else command]</B></A> <SMALL>[<A HREF="#contents">Cont.</A> <A HREF="#listing">List.</A>]</SMALL><BR>
+Logical expressions.<P>
+
+&lt;expr1&gt; and &lt;expr2&gt;: either strings or numbers<BR>
+&lt;op&gt;: one of ==, !=, &gt;, &lt;, &gt;= or &lt;=<BR>
+then and else: optional<BR>
+== and =, != and &lt;&gt; have exactly the same meaning.<P>
+
+Examples:<BR>
+alias vol_up "if $volume < 1 inc volume 0.05"<BR>
+alias vol_down "if $volume > 0 inc volume -0.05"<BR>
+bind kp_plus vol_up<BR>
+bind kp_minus vol_down<P>
+
+if $mapname == dm2 then gl_gamma 0.5 else gl_gamma 0.7<BR>
+if $bottomcolor == 4 then "say i'm in red team"<P>
+
+Notes:<BR>
+== and != are used for string comparisons and >, <, >=, <= only apply to numbers.<BR>
+If the first character is ".", "-", "+", or "0"-"9" it gets treated as a number. So if you want to force string comparison, prefix the two expressions with underscores. eg:<BR>
+if _$date == _01.01.09 say "happy new year! (oh, they still play quake in 2009?) :-)"<P>
+
+<A NAME="gl_conalpha"><B>gl_conalpha [0..1] (default 0.8)</B></A> <SMALL>[<A HREF="#contents">Cont.</A> <A HREF="#listing">List.</A>]</SMALL><BR>
+Console transparency in GL. 1 is solid and 0 is fully transparent.<P>
+
+<A NAME="gl_contrast"><B>gl_contrast [0..1]</B></A> <SMALL>[<A HREF="#contents">Cont.</A> <A HREF="#listing">List.</A>]</SMALL><BR>
+Controls screen brightness in GL.<P>
+
+<A NAME="gl_gamma"><B>gl_gamma</B></A> <SMALL>[<A HREF="#contents">Cont.</A> <A HREF="#listing">List.</A>]</SMALL><BR>
+Controls gamma in GL, only works in fullscreen mode and only if your video card supports the SetDeviceGammaRamp function (Voodoo cards don't).<P>
+
+<A NAME="gl_fb_bmodels"><B>gl_fb_bmodels [0,1] (default 1)</B></A> <SMALL>[<A HREF="#contents">Cont.</A> <A HREF="#listing">List.</A>]</SMALL><BR>
+Enable "fullbright" colors on bsp models (World, health boxes, etc). Setting it to 0 might give you a couple more fps.<P>
+
+<A NAME="gl_fb_models"><B>gl_fb_models [0,1] (default 1)</B></A> <SMALL>[<A HREF="#contents">Cont.</A> <A HREF="#listing">List.</A>]</SMALL><BR>
+Enable "fullbright" colors on alias models (grenades, player models, etc). Setting it to 0 might also give you more fps.<P>
+
+<A NAME="gl_fb_depthhack"><B>gl_fb_depthhack [0,1] (default 1)</B></A> <SMALL>[<A HREF="#contents">Cont.</A> <A HREF="#listing">List.</A>]</SMALL><BR>
+0 is faster but may cause problems (fullbright colors on bmodels may be drawn incorrectly in gl_texsort 0 mode, also it's been reported to provide an ugly effect in gl_texsort 1, -bpp 32 mode on some vid cards)<P>
+
+<A NAME="impulse"><B>impulse imp1 [imp2 [imp3...]]</B></A> <SMALL>[<A HREF="#contents">Cont.</A> <A HREF="#listing">List.</A>]</SMALL><BR>
+Switch to single or best weapon.<BR>
+Example: impulse 5 4 - chooses either nailgun or supernailgun, depending on which one you have. If you have both, chooses supernailgun.<P>
+
+<A NAME="inc"><B>inc [cvar] [value]</B></A> <SMALL>[<A HREF="#contents">Cont.</A> <A HREF="#listing">List.</A>]</SMALL><BR>
+Adds value to a cvar. If value is left out, the cvar in increased by 1.<P>
+
+Example:<BR>
+inc volume -0.1<BR>
+Would subtract 0.1 from volume.<P>
+
+<A NAME="loadloc"><B>loadloc [file.loc]</B></A> <SMALL>[<A HREF="#contents">Cont.</A> <A HREF="#listing">List.</A>]</SMALL><BR>
+Loads a loc file (must be located in id1/locs, qw/locs, or &lt;gamedir&gt;/locs - this means fortress/locs when you play TeamFortress). The ".loc" extention is optional, for example, "loadloc dm6"; if the file name has no extension, use its explicit name ("loadloc dm6.").<P>
+
+<A NAME="macrolist"><B>macrolist</B></A> <SMALL>[<A HREF="#contents">Cont.</A> <A HREF="#listing">List.</A>]</SMALL><BR>
+Lists all supported macro expressions, like $location, $health. See <A HREF="#macros">also</A>.<P>
+
+<A NAME="mapname"><B>mapname</B></A> <SMALL>[<A HREF="#contents">Cont.</A> <A HREF="#listing">List.</A>]</SMALL><BR>
+This is a read-only cvar that contains the short name (like "dm6") of the map being played.<P>
+
+<A NAME="msg_trigger"><B>msg_trigger &lt;alias&gt; &lt;string&gt; [-l &lt;level&gt;]</B></A> <SMALL>[<A HREF="#contents">Cont.</A> <A HREF="#listing">List.</A>]</SMALL><BR>
+Message catcher system. Explained <A HREF="#msg_triggerexp">here</A>.<P>
+
+<A NAME="playdemo"><B>playdemo [demoname]</B></A> <SMALL>[<A HREF="#contents">Cont.</A> <A HREF="#listing">List.</A>]</SMALL><BR>
+Plays demos. See <A HREF="#demos">also</A>.<P>
+
+<A NAME="qizmo_dir"><B>qizmo_dir [path]</B></A> <SMALL>[<A HREF="#contents">Cont.</A> <A HREF="#listing">List.</A>]</SMALL><BR>
+The path to qizmo.exe relative to main Quake folder. Set it to "" if you placed qizmo in one folder with zquake.exe, or "qizmo" if your qizmo path is something like c:\quake\qizmo\qizmo.exe.<P>
+
+<A NAME="r_drawflame"><B>r_drawflame [0,1]</B></A> <SMALL>[<A HREF="#contents">Cont.</A> <A HREF="#listing">List.</A>]</SMALL><BR>
+If 0, torch models are not drawn. On maps like dm6 this really helps the frame rate.<P>
+
+<A NAME="r_drawviewmodel"><B>r_drawviewmodel [0-2] (default 1 for GL, 2 for software)</B></A> <SMALL>[<A HREF="#contents">Cont.</A> <A HREF="#listing">List.</A>]</SMALL><BR>
+A value of 1 makes the weapon model always visible in both GL and software no matter what fov you have, and 2 makes it only visible when fov is &lt;= 90.<P>
+
+<A NAME="r_fastsky"><B>r_fastsky [0,1]</B></A> <SMALL>[<A HREF="#contents">Cont.</A> <A HREF="#listing">List.</A>]</SMALL><BR>
+Setting it to 1 makes the sky flat, helps fps a bit on maps with large sky areas, like dm2, dm3 or q1dm17. It looks a bit dark on dm3, so you might want to change its color using the <A HREF="#r_skycolor">r_skycolor</A> cvar (on dm3, try 7 or 44).<P>
+
+<A NAME="r_fullbrightSkins"><B>r_fullbrightSkins [0,1] (default 0)</B></A> <SMALL>[<A HREF="#contents">Cont.</A> <A HREF="#listing">List.</A>]</SMALL><BR>
+When set to 1, makes all player models fully lit. Many TeamFortress players consider this a cheat, so it's disabled for Team Fortress.<P>
+
+<A NAME="r_grenadetrail"><B>r_grenadetrail [0,1]</B></A> <SMALL>[<A HREF="#contents">Cont.</A> <A HREF="#listing">List.</A>]</SMALL><BR>
+Setting it to 0 hides grenade trails.<P>
+
+<A NAME="r_powerupglow"><B>r_powerupglow [0-2]</B></A> <SMALL>[<A HREF="#contents">Cont.</A> <A HREF="#listing">List.</A>]</SMALL><BR>
+If 0, powerup glow is turned off on all players. This is not recommended though, because you won't be able to see if a player has Quad/Pent. 2 disables the powerup glow from yourself only (really helps fps when you have a powerup).<P>
+
+<A NAME="r_rocketlight"><B>r_rocketlight</B></A><BR>
+Turn off/on dynamic lighting of rockets.<P>
+
+<A NAME="r_rockettrail"><B>r_rockettrail [0-2] (default 1)</B></A> <SMALL>[<A HREF="#contents">Cont.</A> <A HREF="#listing">List.</A>]</SMALL><BR>
+Changes rocket trail.<BR>
+• 0 - trail turned off<BR>
+• 1 - standard<BR>
+• 2 - grenade<P>
+
+<A NAME="r_skycolor"><B>r_skycolor (default 4)</B></A> <SMALL>[<A HREF="#contents">Cont.</A> <A HREF="#listing">List.</A>]</SMALL><BR>
+Change the color of sky when <A HREF="#r_fastsky">r_fastsky</A> is on.<P>
+
+<A NAME="s_khz"><B>s_khz [11,22,44] (default 11)</B></A> <SMALL>[<A HREF="#contents">Cont.</A> <A HREF="#listing">List.</A>]</SMALL><BR>
+Sound quality. Must be set from the command line.<P>
+
+Example:<BR>
+zquake +set s_khz 22<P>
+
+<A NAME="scr_centermenu"><B>scr_centermenu [0,1] (default 1)</B></A> <SMALL>[<A HREF="#contents">Cont.</A> <A HREF="#listing">List.</A>]</SMALL><BR>
+Centers the menu vertically, 1 (has no effect if you're playing in 320x200 mode, same applies to <A HREF="#scr_centersbar">scr_centersbar</A>).<P>
+
+<A NAME="scr_centersbar"><B>scr_centersbar [0,1]</B></A> <SMALL>[<A HREF="#contents">Cont.</A> <A HREF="#listing">List.</A>]</SMALL><BR>
+Centers the status bar horizontally so it looks like in NetQuake.<P>
+
+<A NAME="scr_consize"><B>scr_consize [0..1] (default 0.5)</B></A> <SMALL>[<A HREF="#contents">Cont.</A> <A HREF="#listing">List.</A>]</SMALL><BR>
+Controls vertical size of console, 0.5 is half screen. Alternatively you can use ctrl+up and ctrl+down keys in the console to adjust its height.<P>
+
+<A NAME="screenshot"><B>screenshot [filename]</B></A> <SMALL>[<A HREF="#contents">Cont.</A> <A HREF="#listing">List.</A>]</SMALL><BR>
+Takes a screenshot. Filename is optional.<P>
+
+<A NAME="set"><B>set [name] [value]</B></A> <SMALL>[<A HREF="#contents">Cont.</A> <A HREF="#listing">List.</A>]</SMALL><BR>
+Set a value to or create a cvar.<P>
+
+Example:<BR>
+set mycvar 1<P>
+
+<A NAME="show_speed"><B>show_speed [0-2]</B></A> <SMALL>[<A HREF="#contents">Cont.</A> <A HREF="#listing">List.</A>]</SMALL><BR>
+Shows your horizontal velocity in upper right corner. Very useful for practising bunny hopping.<BR>
+show_speed 2 shows predicted speed (less "laggy" when you're on a modem).<P>
+
+<A NAME="teamcolor"><B>teamcolor [color]</B></A> <SMALL>[<A HREF="#contents">Cont.</A> <A HREF="#listing">List.</A>]</SMALL><BR>
+Overrides the color of teammates. Disabled in TeamFortress.<P>
+
+<A NAME="teamskin"><B>teamskin [skin.pcx]</B></A> <SMALL>[<A HREF="#contents">Cont.</A> <A HREF="#listing">List.</A>]</SMALL><BR>
+Overrides the skins of teammates. Disabled in TeamFortress.<P>
+
+<A NAME="toggle"><B>toggle [cvar]</B></A> <SMALL>[<A HREF="#contents">Cont.</A> <A HREF="#listing">List.</A>]</SMALL><BR>
+Invert the value of a cvar (1 -> 0 and 0 -> 1).<P>
+
+<A NAME="tp_forcetriggers"><B>tp_forcetriggers [0,1]</B></A> <SMALL>[<A HREF="#contents">Cont.</A> <A HREF="#listing">List.</A>]</SMALL><BR>
+Force execution of f_* triggers when there is no one on your team.<P>
+
+<A NAME="tp_loadlocs"><B>tp_loadlocs (default 1)</B></A> <SMALL>[<A HREF="#contents">Cont.</A> <A HREF="#listing">List.</A>]</SMALL><BR>
+If 1, loc files are loaded automatically when the map changes. The loc files should be located in /id1/locs or /qw/locs. Loc files are files that assosiate spots on the map with a message, and they can be used to display your location in a map.<BR>
+No ability exists in zquake, as of yet, to create loc files, best way is to make your own with a proxy, or download them from <A HREF="http://blip.cjb.net" TARGET="_BLANK">http://blip.cjb.net</A>.<P>
+
+<A NAME="tp_need_item"><B>tp_need_<I>item</I></B></A> <SMALL>[<A HREF="#contents">Cont.</A> <A HREF="#listing">List.</A>]</SMALL><BR>
+Customizes the %u macro.<BR>
+Item is:<BR>
+tp_need_shells, tp_need_nails, tp_need_cells, tp_need_rockets, tp_need_rl, tp_need_weapon, tp_need_health, tp_need_ga, tp_need_ya, tp_need_ra<P>
+
+Example:<BR>
+tp_need_health 50<BR>
+say_team I need %u!<P>
+
+<A NAME="tp_name_item"><B>tp_name_<I>item</I></B></A> <SMALL>[<A HREF="#contents">Cont.</A> <A HREF="#listing">List.</A>]</SMALL><BR>
+Customizes item name.<BR>
+Full list:<BR>
+tp_name_at, tp_name_someplace, tp_name_nothing, tp_name_flag, tp_name_backpack, tp_name_health, tp_name_mh, tp_name_cells, tp_name_rockets, tp_name_nails, tp_name_shells, tp_name_suit, tp_name_ring, tp_name_pent, tp_name_quad, tp_name_ga, tp_name_ya, tp_name_ra, tp_name_lg, tp_name_rl, tp_name_gl, tp_name_sng, tp_name_ng, tp_name_ssg, tp_name_sg, tp_name_axe<P>
+
+Example:<BR>
+tp_name_someplace "I have no idea!"<P>
+
+<A NAME="tp_pickup"><B>tp_pickup [[+|-]item] [[+|-]item] ...</B></A> <SMALL>[<A HREF="#contents">Cont.</A> <A HREF="#listing">List.</A>]</SMALL><BR>
+What can be reported by %i, $took, $tookloc and $tookatloc.<P>
+
+Example:<BR>
+You kill an enemy with RL and shout out "pack at".<BR>
+You wait a while but no one says he's coming to pick it up, so you decide to take it yourself, but doing so you accidentally pick up a box of shells. You want to report that the pack is no longer available, but what comes out is "took shells at ". Confusing? Sure. A friend might get killed trying to get to to get the non-existent pack.<BR>
+That's why default for tp_pickup is powerups, suit, armor, weapons, mh, rockets, pack and flag.<P>
+
+The effective setting for %i is tp_pickup PLUS tp_took.<BR>
+For Example:<BR>
+If you set tp_pickup to "nothing" and tp_took to "flag", flag pickups will still be reported.<P>
+
+<A NAME="tp_point"><B>tp_point [[+|-]item] [[+|-]item] ...</B></A> <SMALL>[<A HREF="#contents">Cont.</A> <A HREF="#listing">List.</A>]</SMALL><BR>
+What to report for pointing (%x, %y and %t).<BR>
+Item can be: quad, pent, ring, suit, ra, ya, ga, mh, health, lg, rl, gl, sng, ng, ssg, pack, cells, rockets, nails, shells, flag, armor, weapons, powerups, ammo, all, default, none<BR>
+Item names can be customized with <A HREF="#tp_name_item">tp_name_<I>item</I></A><P>
+
+Examples:<BR>
+tp_point powerups flag<BR>
+say_team I see %t!<P>
+
+<A NAME="tp_took"><B>tp_took [[+|-]item] [[+|-]item] ...</B></A> <SMALL>[<A HREF="#contents">Cont.</A> <A HREF="#listing">List.</A>]</SMALL><BR>
+Customizes the <A HREF="#cl_triggers">f_took</A> trigger.<BR>
+Item can be: quad, pent, ring, suit, ra, ya, ga, mh, health, lg, rl, gl, sng, ng, ssg, pack, cells, rockets, nails, shells, flag, armor, weapons, powerups, ammo, all, default, none<BR>
+Item names can be customized with <A HREF="#tp_name_item">tp_name_<I>item</I></A><P>
+
+Examples:<BR>
+tp_took powerups ra ya lg rl mh flag (same as "default")<BR>
+tp_took all -ammo (report everything but ammo)<BR>
+tp_took +gl (add grenade launcher to pickup list)<BR>
+alias f_took "say_team took %i"<P>
+
+<A NAME="tp_soundtrigger"><B>tp_soundtrigger [trigger]</B></A> <SMALL>[<A HREF="#contents">Cont.</A> <A HREF="#listing">List.</A>]</SMALL><BR>
+SoundTrigger like proxys.<BR>
+A SoundTrigger must be terminated by either a CR, LF or filter. The .wav extension is not required at the end. Trigger is a character before the sound file.<P>
+
+Example:<BR>
+tp_soundtrigger ~<BR>
+filter #a<BR>
+say_team I'm at %l ~location.wav"<BR>
+say_team ~location.wav$\me: I'm at %l #a"<BR>
+say_team ~location$\me: I'm at %l #a"<BR>
+say_team I'm at %l ~location #a"<P>
+
+<A NAME="unalias"><B>unalias [aliasname]</B></A> <SMALL>[<A HREF="#contents">Cont.</A> <A HREF="#listing">List.</A>]</SMALL><BR>
+Completely destroys an alias.<P>
+
+<A NAME="unaliasall"><B>unaliasall</B></A> <SMALL>[<A HREF="#contents">Cont.</A> <A HREF="#listing">List.</A>]</SMALL><BR>
+Destroys all aliases.<P>
+
+<A NAME="v_contentblend"><B>v_contentblend [0..1]</B></A> <SMALL>[<A HREF="#contents">Cont.</A> <A HREF="#listing">List.</A>]</SMALL><BR>
+If 0, water becomes clear. Fractional value work too, for example, you might set it to 0.1 so that water is almost transparent, but you can still see instantly when you are in water (helps a lot on weird maps like e4m1 where it's not all that easy to say where you are).<P>
+
+<A NAME="v_damagecshift"><B>v_damagecshift [0..1]</B></A> <SMALL>[<A HREF="#contents">Cont.</A> <A HREF="#listing">List.</A>]</SMALL><BR>
+Coefficient of the flash (1-full flash, 0-no flash) when you are hit.  Some people are annoyed by the flash, others use it as the only indicator that they are hit, so toggle it as you wish. A good idea is to set it to about 0.3 so that you "feel" how much of your health was taken, but don't get blind when the enemy attacks you with shaft.<P>
+
+<A NAME="v_pentcshift"><B>v_pentcshift [0..1]</B></A> <SMALL>[<A HREF="#contents">Cont.</A> <A HREF="#listing">List.</A>]</SMALL><BR>
+Flash coefficient for when you take the pent.<P>
+
+<A NAME="v_quadcshift"><B>v_quadcshift [0..1]</B></A> <SMALL>[<A HREF="#contents">Cont.</A> <A HREF="#listing">List.</A>]</SMALL><BR>
+Flash coefficient for when you take the quad.<P>
+
+<A NAME="v_ringcshift"><B>v_ringcshift [0..1]</B></A> <SMALL>[<A HREF="#contents">Cont.</A> <A HREF="#listing">List.</A>]</SMALL><BR>
+Flash coefficient for when you take the ring.<P>
+
+<A NAME="v_suitcshift"><B>v_suitcshift [0..1]</B></A> <SMALL>[<A HREF="#contents">Cont.</A> <A HREF="#listing">List.</A>]</SMALL><BR>
+Flash coefficient for when you take the suit.<P>
+
+<A NAME="v_gunkick"><B>v_gunkick [0..1]</B></A> <SMALL>[<A HREF="#contents">Cont.</A> <A HREF="#listing">List.</A>]</SMALL><BR>
+Kick back of the weapon when fired.<P>
+
+<A NAME="v_dlightcshift"><B>v_dlightcshift</B></A> <SMALL>[<A HREF="#contents">Cont.</A> <A HREF="#listing">List.</A>]</SMALL><BR>
+If 0 turns off light blend when you're inside a light bubble (with gl_flashblend 1).<P>
+
+<A NAME="vid_hwgammacontrol"><B>vid_hwgammacontrol [0-1]</B></A> <SMALL>[<A HREF="#contents">Cont.</A> <A HREF="#listing">List.</A>]</SMALL><BR>
+Set to 0 to disables hardware gamma control. (GL) palette flashes are applied to all of the screen unless hwgmma is not present or disabled.<P> 
+
+<A NAME="viewalias"><B>viewalias [aliasname]</B></A> <SMALL>[<A HREF="#contents">Cont.</A> <A HREF="#listing">List.</A>]</SMALL><BR>
+Displays contents of an alias.<P>
+
+<A NAME="writeconfig"><B>writeconfig [filename]</B></A> <SMALL>[<A HREF="#contents">Cont.</A> <A HREF="#listing">List.</A>]</SMALL><BR>
+Writes all your binds and cvars to a custom config file.<P>
+
+<A NAME="servernew"><FONT SIZE="3" COLOR="#000080"><B>New/Modified Server Commands</B></FONT></A><P>
+
+<A NAME="devmap"><B>devmap [mapname]</B></A> <SMALL>[<A HREF="#contents">Cont.</A> <A HREF="#listing">List.</A>]</SMALL><BR>
+Quickly spawn a server with cheats enabled for testing purposes.<P>
+
+<A NAME="kick"><B>kick [userid] [reason]</B></A> <SMALL>[<A HREF="#contents">Cont.</A> <A HREF="#listing">List.</A>]</SMALL><BR>
+Kick command enhanced, you can give a reason for kicking the player.<P>
+
+Example: kick 45 stop camping!<P>
+
+<A NAME="sv_cheats"><B>sv_cheats [0,1]</B></A> <SMALL>[<A HREF="#contents">Cont.</A> <A HREF="#listing">List.</A>]</SMALL><BR>
+You don't have to restart the server with or without -cheats on the command line to enable or disable them, just type sv_cheat 1/0 and restart the map.<BR>
+Also, ZQuake prints a warning ("== Cheats are enabled ==") when it connects to a server with cheats.<P>
+
+<A NAME="sv_maxrate"><B>sv_maxrate</B></A> <SMALL>[<A HREF="#contents">Cont.</A> <A HREF="#listing">List.</A>]</SMALL><BR>
+Maximum rate for clients.<P>
+
+<A NAME="sv_nailhack"><B>sv_nailhack [0,1]</B></A> <SMALL>[<A HREF="#contents">Cont.</A> <A HREF="#listing">List.</A>]</SMALL><BR>
+1 allows nails in most cases to uses less bandwidth and to fly around smoother and point in the right direction.<P>
+
+<A NAME="sv_loadentfiles"><B>sv_loadentfiles [0,1] (default 0)</B></A> <SMALL>[<A HREF="#contents">Cont.</A> <A HREF="#listing">List.</A>]</SMALL><BR>
+See <A HREF="#customentfiles">here</A>.<P>
+
+<A NAME="maxfps"><B>serverinfo maxfps [30..120]</B></A> <SMALL>[<A HREF="#contents">Cont.</A> <A HREF="#listing">List.</A>]</SMALL><BR>
+Maximum fps for clients.<P>
+
+<A NAME="cheats"><B>Cheats</B></A> <SMALL>[<A HREF="#contents">Cont.</A> <A HREF="#listing">List.</A>]</SMALL><BR>
+god, give and noclip are client console commands now (forwarded to server). They will NOT work if you type them in the server's console. Use your ZQuake console instead. Note that you don't have to supply your userid any more so instead of 'rcon foo god &lt;userid&gt;' all you need to type is 'god'.<BR>
+If you're using zqwsv with a non-zquake client, prefix the command with 'cmd', like this: 'cmd god' <P>
+
+<A NAME="teamplay"><FONT SIZE="3" COLOR="#000080"><B>Teamplay</B></FONT></A><P>
+
+<A NAME="macros" COLOR="#000080"><B>List of Macros</B></A> <SMALL>[<A HREF="#contents">Cont.</A> <A HREF="#listing">List.</A>]</SMALL><BR>
+Macros column - full macro name, to be used in console scripts.<BR>
+Qizmo - proxy style, use it in say/say_team commands (<A HREF="#cl_parsesay">cl_parsesay</A> must be set to 1 for this to work).
+
+<TABLE BORDER=1 CELLSPACING=1 CELLPADDING=2 WIDTH=80%>
+<TR><TD><FONT SIZE=2><B>Macro</B></FONT></TD><TD><FONT SIZE=2><B>Qizmo</B></FONT></TD><TD><FONT SIZE=2><B>Description</B></FONT></TD></TR>
+<TR><TD><FONT SIZE=2>$armor</FONT></TD><TD><FONT SIZE=2>%a</FONT></TD><TD><FONT SIZE=2>amount of armor</FONT></TD></TR>
+<TR><TD></TD><TD><FONT SIZE=2>%[a]</FONT></TD><TD><FONT SIZE=2>same as %A:%a, but adds glowing braces if armor is low</FONT></TD></TR>
+<TR><TD><FONT SIZE=2>$armortype</FONT></TD><TD><FONT SIZE=2>%A</FONT></TD><TD><FONT SIZE=2>type of armor (ga, ya, ra)</FONT></TD></TR>
+<TR><TD></TD><TD><FONT SIZE=2>%b</FONT></TD><TD><FONT SIZE=2>best weapon and amount of ammo for it in RL:10 style</FONT></TD></TR>
+<TR><TD><FONT SIZE=2>$health</FONT></TD><TD><FONT SIZE=2>%h</FONT></TD><TD><FONT SIZE=2>health</FONT></TD></TR>
+<TR><TD></TD><TD><FONT SIZE=2>%[h]</FONT></TD><TD><FONT SIZE=2>same as %h, but adds glowing braces if health is low</FONT></TD></TR>
+<TR><TD><FONT SIZE=2>$shells</FONT></TD><TD></TD><TD><FONT SIZE=2>amount of shells</FONT></TD></TR>
+<TR><TD><FONT SIZE=2>$nails</FONT></TD><TD></TD><TD><FONT SIZE=2>..nails</FONT></TD></TR>
+<TR><TD><FONT SIZE=2>$rockets</FONT></TD><TD><FONT SIZE=2>%r</FONT></TD><TD><FONT SIZE=2>...rockets/grenades</FONT></TD></TR>
+<TR><TD><FONT SIZE=2>$cells</FONT></TD><TD><FONT SIZE=2>%c</FONT></TD><TD><FONT SIZE=2>...lg batteries</FONT></TD></TR>
+<TR><TD></TD><TD><FONT SIZE=2>%w</FONT></TD><TD><FONT SIZE=2>current weapon and amount of ammo for it, in "RL:5" style</FONT></TD></TR>
+<TR><TD><FONT SIZE=2>$powerups</FONT></TD><TD><FONT SIZE=2>%p</FONT></TD><TD><FONT SIZE=2>powerups which you have (quad/pent/ring)</FONT></TD></TR>
+<TR><TD></TD><TD><FONT SIZE=2>%[P]</FONT></TD><TD><FONT SIZE=2>same as %p, but adds glowing braces if you have a powerup</FONT></TD></TR>
+<TR><TD><FONT SIZE=2>$tookatloc</FONT></TD><TD><FONT SIZE=2>%i</FONT></TD><TD><FONT SIZE=2>the name and location of the item you picked up last</FONT></TD></TR>
+<TR><TD><FONT SIZE=2>$location</FONT></TD><TD><FONT SIZE=2>%l</FONT></TD><TD><FONT SIZE=2>current location according to the loc file (which should be loaded)</FONT></TD></TR>
+<TR><TD></TD><TD><FONT SIZE=2>%L</FONT></TD><TD><FONT SIZE=2>current location, or location of death if you died 5 or less seconds ago</FONT></TD></TR>
+<TR><TD><FONT SIZE=2>$deathloc</FONT></TD><TD><FONT SIZE=2>%d</FONT></TD><TD><FONT SIZE=2>location of last death</FONT></TD></TR>
+<TR><TD></TD><TD><FONT SIZE=2>%x</FONT></TD><TD><FONT SIZE=2>what you see (pointing)</FONT></TD></TR>
+<TR><TD></TD><TD><FONT SIZE=2>%y</FONT></TD><TD><FONT SIZE=2>location of the item you see</FONT></TD></TR>
+<TR><TD></TD><TD><FONT SIZE=2>%t</FONT></TD><TD><FONT SIZE=2>same as "%x at %y"</FONT></TD></TR>
+<TR><TD></TD><TD><FONT SIZE=2>%u</FONT></TD><TD><FONT SIZE=2>what you need (see <A HREF="#tp_need_item">tp_need_<I>item</I></A>)</FONT></TD></TR>
+<TR><TD><FONT SIZE=2>$weapon</FONT></TD><TD></TD><TD><FONT SIZE=2>current weapon (lg, rl, gl, sng, ng, ssg, sg, or axe)</FONT></TD></TR>
+<TR><TD><FONT SIZE=2>$weaponnum</FONT></TD><TD></TD><TD><FONT SIZE=2>the number of current weapon (1 for axe, 7 for RL, etc)</FONT></TD></TR>
+<TR><TD><FONT SIZE=2>$ammo</FONT></TD><TD></TD><TD><FONT SIZE=2>amount of ammo for current weapon</FONT></TD></TR>
+<TR><TD><FONT SIZE=2>$bestweapon</FONT></TD><TD></TD><TD><FONT SIZE=2>best weapon</FONT></TD></TR>
+<TR><TD><FONT SIZE=2>$bestammo</FONT></TD><TD></TD><TD><FONT SIZE=2>amount of ammo for the best weapon</FONT></TD></TR>
+<TR><TD><FONT SIZE=2>$date</FONT></TD><TD></TD><TD><FONT SIZE=2>current date in dd.mm.yy format</FONT></TD></TR>
+<TR><TD><FONT SIZE=2>$time</FONT></TD><TD></TD><TD><FONT SIZE=2>current time in hh:mm format</FONT></TD></TR>
+<TR><TD><FONT SIZE=2>$qt</FONT></TD><TD></TD><TD><FONT SIZE=2>quote (") character</FONT></TD></TR>
+</TABLE><P>
+
+<A NAME="funcharconv" COLOR="#000080"><B>Fun Character Conversion</B></A> <SMALL>[<A HREF="#contents">Cont.</A> <A HREF="#listing">List.</A>]</SMALL><BR>
+When cl_parsefunchars is turned on, you can use <a target=_top HREF="http://zquake.frag.ru/files/ocrana.zip">Ocrana</A> LED's by hand right out of the console and chat anonymously through "$\" without showing your name (chat messages that are seen without your name at the beginning). More QuakeWorld fonts are avaliable <A HREF="http://hem.passagen.se/bugsy/qwgfx" TARGET="_BLANK">here</A>.<BR>
+Full list:<P>
+
+• $R - red lamp<BR>
+• $G - green lamp<BR>
+• $B - blue lamp<BR>
+• $Y - yellow lamp<BR>
+• $\ - carridge return<BR>
+• $( - big left bracket<BR>
+• $= - big equal sign<BR>
+• $) - big right bracket<BR>
+• $. - red middle dot<BR>
+• $, - white dot (names only)<BR>
+• $< - small left bracket<BR>
+• $- - small equal sign<BR>
+• $> - small right bracket<BR>
+• $a - big grey block<BR>
+• $: - line feed<BR>
+• $b - filled red block<BR>
+• $d - right pointing red arrow<BR>
+• $[ - gold left square bracket<BR>
+• $] - gold right square bracket<BR>
+• $^ - white ^ (names only)<BR>
+• ^x - red x (names only)<BR>
+• $0-9 - yellow number<BR>
+• $x<I>yy</I> - char with hex code <I>yy</I><P>
+
+(In order to use the lamps, you'll need the Ocrana pak.)<P>
+
+Example:<BR>
+say_team "$\$R$R NMY QUAD $R$R$:$R$R NMY QUAD $R$R$:$R$R NMY QUAD $R$R"<BR>
+Your teammates will see three lines containing @@ NMY QUAD @@ (@ here means red ocrana lamps). The reason for using $: instead of three identical say commands is to avoid triggering flood protection.<P>
+
+<A NAME="otherfeatures"><FONT SIZE="3" COLOR="#000080"><B>Other Features</B></FONT></A><P>
+
+<A NAME="cvarexpansion"><B>Cvar Expansion</B></A> <SMALL>[<A HREF="#contents">Cont.</A> <A HREF="#listing">List.</A>]</SMALL><BR>
+CVars are console variables and can be used to hold info (numbers, characters..).<P>
+
+Examples:<BR>
+echo $sensitivity //shows your current sens.<P>
+
+alias +zoom "set _fov $fov; fov 45"<BR>
+alias -zoom "set fov $_fov"<BR>
+With the above two aliases you'll be able to restore the previous value of a cvar. Useful when you're writing scripts that regulate your rate, volume, sens, etc.<P>
+
+bind F5 "if rate <= 3500 inc rate 500; echo $rate"<BR>
+bind F6 "if rate >= 1000 inc rate -500; echo $rate"<P>
+This will let you adjust your rate without bringing down the console, by just typing F5 and F6 keys.<P>
+
+<A NAME="msg_triggerexp"><B>Message Catcher System</B></A> <SMALL>[<A HREF="#contents">Cont.</A> <A HREF="#listing">List.</A>]</SMALL><BR>
+<B>msg_trigger &lt;alias&gt; &lt;string&gt; [-l &lt;level&gt;]</B><BR>
+This command lets you automatically execute an alias if a specific string is found in the console.<BR>
+The alias is limited to the following commands: alias, echo, play, playvol, stopsound, say, say_team, set, msg_trigger, inc, record, easyrecord, stop, if.<P>
+
+You can also set cvars, but you can't execute nested aliases.<BR>
+The length of the &lt;string&gt; parameter is limited to 64 chars.
+You can specify the &lt;level&gt; parameter if you want to catch pickup messages, death messages, or player chat.<P>
+
+The meaning of &lt;level&gt; is as follows:<BR>
+• 0 - pickup messages ("You got armor")<BR>
+• 1 - death messages ("unnamed becomes bored with life")<BR>
+• 2 - other messages ("Quad damage is wearing off")<BR>
+• 3 - chat messages<BR>
+• t - team chat messages<P>
+
+Example:<BR>
+alias no_ammo "play noammo.wav"<BR>
+msg_trigger no_ammo "not enough ammo"<BR>
+Now when "not enough ammo" appears in the console, alias no_ammo will be automatically executed (in this case it plays a wav file).<P>
+
+For TeamFortress:<BR>
+alias play_count "play count.wav"<BR>
+msg_trigger play_count "renade primed"<BR>
+Now if "Grenade primed, 3 seconds..." or "Napalm grenade primed, 3 seconds..." appears in console then play_count will be executed.<P>
+
+Msg_trigger can also be used instead of SoundTriggers for playing sounds. However a msg_trigger will have to be made for every message you want to play a sound for.<P>
+
+Example:<BR>
+alias play_spiral "play incspiral.wav"<BR>
+alias play_ramps "play incramps.wav"<BR>
+alias play_lift "play inclift.wav"<BR>
+alias play_ourflag "play ourflag.wav"<BR>
+alias play_enemyflag "play enemyflag.wav"<BR>
+msg_trigger play_spiral "incoming spiral" -l t<BR>
+msg_trigger play_spiral "inc spiral" -l t<BR>
+msg_trigger play_ramps "incoming ramps" -l t<BR>
+msg_trigger play_ramps "inc ramps" -l t<BR>
+msg_trigger play_lift "incoming lift" -l t<BR>
+msg_trigger play_lift "inc lift" -l t<BR>
+msg_trigger play_ourflag "our flag" -l t<BR>
+msg_trigger play_enemyflag "enemy flag" -l t<P>
+
+<A NAME="keysinconsole"><B>Key Use in Console</B></A> <SMALL>[<A HREF="#contents">Cont.</A> <A HREF="#listing">List.</A>]</SMALL><BR>
+Console keys are used more effectively now. Keys such as &lt;-- and --&gt;, HOME and END work as expected in editing the current line. (To use HOME and END as they were originally intended, i.e. to scroll the console buffer all the way up or down, use ctrl+HOME/ctrl+END). You can also use ctrl+leftarrow and ctrl+rightarrow to jump one word left/right. Pressing ctrl+PgUp or ctrl+PgDn will scroll the console one page up or down.<P>
+
+Fun characters can be created in the console:<BR>
+ctrl+[, ] - gold square brackets<BR>
+ctrl+R, G, B, Y - ocrana LEDs<BR>
+alt+&lt;letter&gt; - red letter<BR>
+ctrl+&lt;0..9&gt; - yellow number<BR>
+ctrl+shift+() - big left and right brackets<BR>
+ctrl+= - big equals sign<BR>
+ctrl+shift+&lt;&gt; - left and right small bracket<BR>
+ctrl+- - small equals sign<BR>
+ctrl+, - white middle dot (only in names)<BR>
+ctrl+. - yellow middle dot<BR>
+ctrl+a - big grey block<BR>
+ctrl+shift+B - filled red block<BR>
+ctrl+shift+C - right pointing red arrow<P>
+
+Note that red chars are only useful for creating fun names, you can't use them in chat because chat messages are red anyway. And finally, you can press and hold any key to make it auto repeat.<P>
+
+<A NAME="demos"><B>Demos</B></A> <SMALL>[<A HREF="#contents">Cont.</A> <A HREF="#listing">List.</A>]</SMALL><BR>
+During playback of demos, pause now actually works, as does cl_demospeed:<BR>
+cl_demospeed 0.25 - slomo viewing (1/4th normal speed)<BR>
+cl_demospeed 5 - fast forward (5 times normal speed)<BR>
+cl_demospeed 1 - normal speed<P>
+
+easyrecord [demoname] - with this command, you can record demos without	specifying a name.  In other words, if demoname is not specified (and it shouldn't, as it defeats the whole purpose), the name is generated in the following manner:<P>
+
+duel: &lt;player1&gt;_vs_&lt;player2&gt;_map<BR>
+teamplay: &lt;player1&gt;_&lt;team1&gt;_vs_&lt;team2&gt;_map<BR>
+ffa: &lt;player&gt;_ffa_map<BR>
+one player: &lt;player&gt;_map<BR>
+spectator mode: &lt;player&gt;_map<P>
+
+If a demo with the same name already exists, an _ and two numbers will be appended to the filename. So if there is already an unnamed_dm6.qwd, unnamed_dm6_00.qwd will be created, then unnamed_dm6_01.qwd, and so on. Also, when demoname is specified, it will work like the record command, except it won't overwrite existing demos by adding numbers to the new demo filename.<P>
+
+Example:<BR>
+easyrecord tempdemo<BR>
+easyrecord $name_$team_$mapname<P>
+
+playdemo command can be used for playing .qwz demos. You still need qizmo.exe and compress.dat, but ZQuake will do the job of unpacking the .qwz for you. Note that you must set <A HREF="#qizmo_dir">qizmo_dir</A> cvar properly so that ZQuake knows where your qizmo.exe is located.<P>
+
+<A NAME="cmdlineparam"><B>Command-Line Parameters</B></A> <SMALL>[<A HREF="#contents">Cont.</A> <A HREF="#listing">List.</A>]</SMALL><BR>
+zquake.exe and zqwsv.exe:<BR>
+<I>-port &lt;portnum&gt;</I> - Changes the port of the server (default is 27500).<BR>
+GL only:<BR>
+<I>-nohwgamma</I> - Disables hardrware gamma control.<P>
+
+<A NAME="f_reply"><B>f_version and z_version</B></A> <SMALL>[<A HREF="#contents">Cont.</A> <A HREF="#listing">List.</A>]</SMALL><BR>
+ZQuake replies, like a proxy, to f_version or z_version in chat with its current version and build. It doesn't reply, though, if you're in spectator mode, or if 20 seconds haven't passed since the last reply.<P>
+
+<A NAME="tfcheatprot"><B>TF Cheats Protection</B></A> <SMALL>[<A HREF="#contents">Cont.</A> <A HREF="#listing">List.</A>]</SMALL><BR>
+A lot of commands and cvars were changed not to let people cheat in TeamFortress.<BR>
+- v_cshift, v_idlescale and other v_i* are disabled in TeamFortress, in order to avoid cheating with old flash and concussion grenades.<BR>
+- gl_polyblend cannot be used to reduce the effect of flash grenades.<BR>
+Note that it only applies to TeamFortress, in normal DM all the cvars and commands work just as expected.<P>
+
+<A NAME="customentfiles"><B>Server Custom Ent Files</B></A> <SMALL>[<A HREF="#contents">Cont.</A> <A HREF="#listing">List.</A>]</SMALL><BR>
+The custom entity files lets you add, delete and modify entities on a map without recompiling the .bsp - just put an .ent file into id1/maps and set sv_loadentfiles to 1.<BR>
+Example ent files: <a target=_top HREF="http://zquake.frag.ru/files/end.ent">1</A> <a target=_top HREF="http://zquake.frag.ru/files/amphi.ent">2</A> <a target=_top HREF="http://zquake.frag.ru/files/dm1.ent">3</A><P>
+
+What makes the .ent files so handy is that they don't affect a map's checksum, so if you use them on a public server, the users don't have to download any additional maps. They are also very easy to create because you don't have to recompile the map - just open it in an editor like QuArK, do whatever changes you want, then export the "entities" lump to a text file, rename it to .ent and place in your id1/maps folder.<BR>
+In fact you don't need any editor at all - you can just open a .bsp file in any text editor, search for "worldspawn", then copy-and-paste to a new file all the text between (and including) the first and last opening brace. You should get something like this:<P>
+
+{<BR>
+"wad" "gfx/wizard.wad"<BR>
+"classname" "worldspawn"<BR>
+"message" "Shub-Niggurath's Pit"<BR>
+"sounds" "4"<BR>
+}<BR>
+...<BR>
+{<BR>
+"classname" "item_armorInv"<BR>
+"origin" "-176 -496 -560"<BR>
+"spawnflags" "1792"<BR>
+}<P>
+
+Do whatever changes you want and save the file. You can change the "message" field in worldspawn entity to something like "my super cool map" if you want.<P>
+
+When an entfile is loaded on the server, an "*entfile" key is added to its serverinfo. Its value is checksum of the entity file. You can always tell (by typing "serverinfo" in the console) if you're playing a modified map. This is to prevent some bright person making a cheat entfile (ie place a red armor + 100 health + quad in a secret place :) and use it in an official game.<P>
+
+<A NAME="contacts"><FONT SIZE="3" COLOR="#000080"><B>Contacts</B></FONT></A><P>
+
+Coding: Anton Gavrilov aka Tonik (<A HREF="mailto:tonik@vipmail.ru">tonik@vipmail.ru</A>)<BR>
+Additional coding: <A HREF="http://www.quakeforge.net" TARGET="_BLANK">QuakeForge</A> team; Victor Luchits aka Vic (<A HREF="mailto:vic@captured.com">vic@captured.com</A>)<BR>
+Ideas and web page design: Alexei Shabrov aka Turba (<A HREF="mailto:turba@gazeta.ru">turba@gazeta.ru</A>)<P>
+
+User Manual: bliP (<A HREF="http://nisda.net/contact.php">contact</A>, <A HREF="http://nisda.net" TARGET="_blank">http://nisda.net</A>)<BR>
+Info: Quake666A/B (<A HREF="mailto:quake_jatekos@freemail.hu">quake_jatekos@freemail.hu</A>)<BR>
+Original readme: Tonik (<A HREF="mailto:tonik@vipmail.ru">tonik@vipmail.ru</A>)<BR>
+Translator of original readme: GuPH (<A HREF="mailto:guph@netzero.net">guph@netzero.net</A>, <A HREF="http://guph.net" TARGET="_blank">http://guph.net</A>)<P>
+
+Thanks to <A HREF="http://www.idsoftware.com" TARGET="_BLANK">id Software</A> and the <A HREF="http://www.quakeworld.net" TARGET="_BLANK">QuakeWorld</A> team for the original source.
+
+</FONT>
+</BODY>
+
+</HTML>

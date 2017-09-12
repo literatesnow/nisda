@@ -1,0 +1,5 @@
+ubuntu-*-console.log
+dist/*
+.rake*
+.vagrant/*
+.netlify
