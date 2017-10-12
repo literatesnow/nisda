@@ -177,3 +177,35 @@ a:visited {
   vertical-align: middle;
 }
 
+div.phototags {
+  margin-left: 1em;
+}
+
+div.phototags span {
+  padding: 0.25em;
+  text-align: center;
+  border: 0.05em solid #c8d6ff;
+  border-radius: 0.5em;
+  background-color: #e4ebff;
+}
+
+div.content > h3.photodate {
+  margin-top: 0em;
+}
+
+ul.photolist {
+  padding: 0em;
+  margin-left: 1em;
+  display: inline;
+  display: flex;
+  flex-wrap: wrap;
+  list-style: none;
+}
+
+ul.photolist li a {
+  text-decoration: none;
+}
+
+ul.photolist img {
+  display: block;
+}
