@@ -1,0 +1,186 @@
+#!/usr/bin/env ruby
+
+# Generates photos.html in a very unhappy way.
+
+require 'json'
+require 'date'
+require 'cgi'
+
+pepper_file    = ENV['PEPPER_FILE']
+
+photos_by_date = {}
+tags_by_date   = {}
+
+pepper = JSON.parse File.read(pepper_file), symbolize_names: true
+
+# Group each photo by date and tags.
+pepper.each do |photo|
+  begin
+    image_date = DateTime.strptime photo[:imageDate], '%Y-%m-%d %H:%M:%S'
+    date_str   = image_date.strftime '%Y-%m-%d'
+  rescue => e
+    STDERR.puts "Skipping #{photo[:fileName]}: #{e} '#{photo[:imageDate]}'"
+    next
+  end
+
+  photo[:tags].sort!
+  tags_str = "#{date_str}-#{photo[:tags].join('_')}"
+
+  photos_by_date[tags_str] = [] unless photos_by_date[tags_str]
+  photos_by_date[tags_str] << photo
+
+  tags_by_date[date_str] = {} unless tags_by_date[date_str]
+  tags_by_date[date_str][tags_str] = photo[:tags]
+end
+
+# Each section is a date heading followed by tags and the
+# images associated with the tags.
+sections = []
+
+tags_by_date.each do |date, tags|
+  section = { date: date,
+              sub:  [] }
+
+  tags.keys.sort.each do |key|
+    photos = photos_by_date[key]
+    photos.sort! { |a, b| a[:image_date] <=> b[:image_date] }
+
+    section[:sub] << { tags: tags[key],
+                       photos: photos }
+  end
+
+  sections << section
+end
+
+# Newest sections first.
+sections.sort! { |a, b| b[:date] <=> a[:date] }
+
+def html_heading(date)
+  <<~HTML
+    <h2 class="photodate">
+      <a name="photos-#{CGI.escapeHTML(date)}">#{CGI.escapeHTML(date)}</a>
+    </h2>
+  HTML
+end
+
+def html_tags(tags)
+  <<~HTML
+  <div class="phototags">
+    #{tags.map { |tag| "<span>#{CGI.escapeHTML(tag)}</span>" }.join("\n")}
+  </div>
+  HTML
+end
+
+def html_photo_list(tags, photos)
+  html = []
+  html << '<ul class="photolist">'
+
+  photos.each do |photo|
+    desc = "Photo date: #{photo[:imageDate]}, tags: #{tags.join ', '}"
+    html << <<~HTML
+      <li>
+        <a href="images/photos/#{CGI.escapeHTML photo[:fileName]}">
+          <img src="images/photos/thumbs/#{CGI.escapeHTML photo[:fileName]}"
+               alt="#{CGI.escapeHTML desc}"
+               title="#{CGI.escapeHTML desc}">
+        </a>
+      </li>
+    HTML
+  end
+
+  html << '</ul>'
+  html.join "\n"
+end
+
+def html_page_top
+  <<~HTML
+  <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+  <html>
+    <head>
+    <title>Chris :: Photos</title>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+    <meta name="author" content="Chris">
+    <meta name="generator" CONTENT="vim7">
+    <link rel="stylesheet" href="blip.css" type="text/css">
+    </head>
+
+    <body>
+      <div id="top">
+        <div class="logo"><a href="/">Chris</a></div>
+
+        <div class="catchline">Digitally Remastered For Success</div>
+      </div>
+
+      <div id="left">
+        <div class="box">
+          <div class="ht"><a href="/">Main</a></div>
+        </div>
+
+        <div class="box">
+          <div class="hm">Projects</div>
+
+          <div class="hs"><a href="superfluous.html">Superfluous</a></div>
+          <div class="hs"><a href="arise.html">Arise</a></div>
+          <div class="hs"><a href="fizz.html">Fizz</a></div>
+          <div class="hs"><a href="watcher.html">Watcher</a></div>
+          <div class="hs"><a href="crank.html">crank</a></div>
+          <div class="hs"><a href="raddns.html">RadDNS</a></div>
+          <div class="hs"><a href="personified.html">Personified</a></div>
+        </div>
+
+        <div class="box">
+          <div class="hm">Games</div>
+
+          <div class="hs"><a href="quake.html">Quake</a></div>
+          <div class="hs"><a href="battlefield.html">Battlefield</a></div>
+        </div>
+
+        <div class="box">
+          <div class="ht"><a href="photos.html">Photos</a></div>
+          <div class="ht"><a href="source.html">Source Code</a></div>
+          <div class="ht"><a href="contact.html">Contact</a></div>
+        </div>
+
+        <div class="box">
+          <img class="centerimage" src="images/lemming.png" alt="Lemming">
+        </div>
+      </div>
+
+      <div id="center">
+        <div class="content">
+          <h1><a name="Photos">Photos</a></h1>
+        </div>
+
+        <div class="content">
+  HTML
+end
+
+def html_page_bottom
+  <<~HTML
+        </div>
+      </div>
+    </body>
+
+  </html>
+  HTML
+end
+
+html = []
+html << html_page_top
+
+unless sections.empty?
+  sections.each do |section|
+    html << html_heading(section[:date])
+
+    section[:sub].each do |sub|
+      html << html_tags(sub[:tags])
+      html << html_photo_list(sub[:tags], sub[:photos])
+    end
+  end
+else
+  html << 'No current photos.'
+end
+
+html << html_page_bottom
+
+puts html.join("\n")

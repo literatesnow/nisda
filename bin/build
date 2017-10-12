@@ -1,0 +1,38 @@
+#!/bin/bash
+
+BASE_DIR=$(dirname "$0")/..
+
+WWW_DIR=$BASE_DIR/www
+PEPPER_DIR=$BASE_DIR/pepper
+DIST_DIR=$BASE_DIR/dist
+
+init() {
+  mkdir -p "$DIST_DIR"
+}
+
+clean() {
+  rm -rf "$DIST_DIR" > /dev/null 2>&1
+}
+
+copy_static() {
+  cp -R "$WWW_DIR"/static/* "$DIST_DIR"
+}
+
+copy_pepper() {
+  mkdir -p "$DIST_DIR/images/photos/"
+  cp "$PEPPER_DIR"/images/* "$DIST_DIR/images/photos/"
+
+  mkdir -p "$DIST_DIR/images/photos/thumbs/"
+  cp "$PEPPER_DIR"/thumbs/* "$DIST_DIR/images/photos/thumbs/"
+}
+
+gen_photo_html() {
+  export PEPPER_FILE=$PEPPER_DIR/pepper.json
+  "$BASE_DIR/bin/gen_photos_page" > "$DIST_DIR/photos.html"
+}
+
+clean
+init
+copy_static
+copy_pepper
+gen_photo_html
