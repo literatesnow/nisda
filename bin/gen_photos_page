@@ -92,7 +92,19 @@ def html_photo_list(tags, photos)
   html.join "\n"
 end
 
-def html_page_top
+def html_page_top(photo)
+  if photo
+    meta_og = <<~OG
+      <meta property="og:url"         content="https://www.nisda.net/photos.html">
+      <meta property="og:type"        content="article">
+      <meta property="og:title"       content="Photos" />
+      <meta property="og:description" content="Latest photos." />
+      <meta property="og:image"       content="https://www.nisda.net/images/photos/thumbs/#{CGI.escapeHTML photo[:fileName]}">
+    OG
+  else
+    meta_og = ''
+  end
+
   <<~HTML
   <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
   <html>
@@ -100,7 +112,8 @@ def html_page_top
     <title>Chris :: Photos</title>
     <meta http-equiv="content-type" content="text/html; charset=utf-8">
     <meta name="author" content="Chris">
-    <meta name="generator" CONTENT="vim7">
+    <meta name="generator" content="vim7">
+    #{meta_og}
     <link rel="stylesheet" href="blip.css" type="text/css">
     </head>
 
@@ -172,8 +185,17 @@ def html_page_bottom
   HTML
 end
 
+def first_photo(sections)
+  return nil unless sections
+  section = sections.first
+  return nil unless section
+  sub = section[:sub].first
+  return nil unless sub
+  sub[:photos].first
+end
+
 html = []
-html << html_page_top
+html << html_page_top(first_photo sections)
 
 unless sections.empty?
   sections.each do |section|
