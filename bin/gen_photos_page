@@ -158,6 +158,13 @@ end
 def html_page_bottom
   <<~HTML
         </div>
+
+        <div class="content">
+          <div class="blocktext">
+            <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/"><img style="display: block;" alt="Creative Commons License" src="images/cc-by-sa-80x15.png"></a>
+          All photos are licensed under a Creative Commons <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/">Attribution-ShareAlike 4.0</a> International License.
+          </div>
+        </div>
       </div>
     </body>
 
