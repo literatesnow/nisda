@@ -7,6 +7,7 @@ require 'date'
 require 'cgi'
 
 pepper_file    = ENV['PEPPER_FILE']
+uri_prefix     = ENV['URI_PREFIX']
 
 photos_by_date = {}
 tags_by_date   = {}
@@ -194,6 +195,20 @@ def first_photo(sections)
   sub[:photos].first
 end
 
+def print_sections(sections, uri_prefix)
+  unless sections.empty?
+    sections.reverse.each do |section|
+      STDERR.puts "----------"
+      STDERR.puts "#{section[:date]}"
+      section[:sub].each do |sub|
+        STDERR.puts sub[:tags].join(', ')
+      end
+      STDERR.puts "#{uri_prefix}#{section[:date]}" unless uri_prefix.nil?
+      STDERR.puts "\n"
+    end
+  end
+end
+
 html = []
 html << html_page_top(first_photo sections)
 
@@ -211,5 +226,7 @@ else
 end
 
 html << html_page_bottom
+
+print_sections sections, uri_prefix
 
 puts html.join("\n")
