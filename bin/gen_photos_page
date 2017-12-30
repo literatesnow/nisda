@@ -73,14 +73,16 @@ def html_tags(tags)
 end
 
 def html_photo_list(tags, photos)
-  html = []
+  html   = []
   html << '<ul class="photolist">'
 
   photos.each do |photo|
     desc = "Photo date: #{photo[:imageDate]}, tags: #{tags.join ', '}"
     html << <<~HTML
       <li>
-        <a href="images/photos/#{CGI.escapeHTML photo[:fileName]}">
+        <a id="lightphoto-#{photo[:s_id]}"
+           href="images/photos/#{CGI.escapeHTML photo[:fileName]}"
+           onclick="return lighton(#{photo[:s_id]});">
           <img src="images/photos/thumbs/#{CGI.escapeHTML photo[:fileName]}"
                alt="#{CGI.escapeHTML desc}"
                title="#{CGI.escapeHTML desc}">
@@ -106,15 +108,137 @@ def html_page_top
   <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
   <html>
     <head>
-    <title>Chris :: Photos</title>
-    <meta http-equiv="content-type" content="text/html; charset=utf-8">
-    <meta name="author" content="Chris">
-    <meta name="generator" content="vim7">
-    #{meta_og}
-    <link rel="stylesheet" href="blip.css" type="text/css">
+      <title>Chris :: Photos</title>
+      <meta http-equiv="content-type" content="text/html; charset=utf-8">
+      <meta name="author" content="Chris">
+      <meta name="generator" content="vim7">
+      #{meta_og}
+      <link rel="stylesheet" href="blip.css" type="text/css">
+      <script type="text/javascript">
+        function lightoff() {
+          document.getElementById('lightbox').className = 'off';
+    
+          return false;
+        }
+    
+        function lighton(elemId) {
+          if (!elemId) {
+            return false;
+          }
+
+          var box = document.getElementById('lightbox');
+          box.className = 'on';
+
+          if (box.focus) {
+            box.focus();
+          }
+
+          var prevId = elemId - 1;
+          var nextId = elemId + 1;
+
+          var prev = document.getElementById('lightphoto-' + prevId);
+          var next = document.getElementById('lightphoto-' + nextId);
+
+          var prevA = document.getElementById('lightprev');
+          if (prev !== null) {
+            prevA.className = 'on';
+            light.prevId = prevId;
+          } else {
+            prevA.className = 'off';
+            light.prevId = null;
+          }
+
+          var nextA = document.getElementById('lightnext');
+          if (next !== null) {
+            nextA.className = 'on';
+            light.nextId = nextId;
+          } else {
+            nextA.className = 'off';
+            light.nextId = null;
+          }
+
+          var elem = document.getElementById('lightphoto-' + elemId);
+
+          if (elem) {
+            var url = elem.getAttribute('href');
+            box.style.backgroundImage = 'url(' + url + ')';
+          }
+
+          return false;
+        }
+
+        (function() {
+          light = {
+            prevId: null,
+            nextId: null
+          };
+
+          window.addEventListener('keydown', function(evt) {
+            if (evt.defaultPrevented) {
+              evt.defaultPrevented();
+              return;
+            }
+
+            evt = evt || window.event;
+
+            if (evt.keyCode == 27 || evt.key == 'Escape' || evt.key == 'Esc') {
+              lightoff();
+              if (evt.preventDefault) {
+                evt.preventDefault();
+              }
+            }
+          }, true);
+
+          document.addEventListener('DOMContentLoaded', function() {
+            var prev = document.getElementById('lightprev');
+            prev.addEventListener('click', function() {
+              return lighton(light.prevId);
+            }, true);
+            prev.className = 'on';
+
+            var next = document.getElementById('lightnext');
+            next.addEventListener('click', function() {
+              return lighton(light.nextId);
+            }, true);
+            next.className = 'on';
+
+            var box = document.getElementById('lightbox');
+            box.addEventListener('keydown', function(evt) {
+              if (evt.defaultPrevented) {
+                evt.defaultPrevented();
+                return;
+              }
+
+              evt = evt || window.event;
+
+              if (evt.keyCode == 8 || evt.key == 'Backspace') {
+                lighton(light.prevId);
+              } else if (evt.keyCode == 32 || evt.key == ' ' || evt.key == 'Spacebar') {
+                lighton(light.nextId);
+              } else {
+                return;
+              }
+
+              if (evt.preventDefault) {
+                evt.preventDefault();
+              }
+            }, true);
+          });
+        })();
+      </script>
     </head>
 
     <body>
+      <div id="lightbox" class="off">
+        <div class="textcenter">
+          <a href="#" onclick="return lightoff();">Close</a>
+        </div>
+        <div class="textcenter">
+          <a id="lightprev" class="off" href="#">Previous</a>
+          <a id="lightnext" class="off" href="#">Next</a>
+        </div>
+      </div>
+
       <div id="top">
         <div class="logo"><a href="/">Chris</a></div>
 
@@ -196,6 +320,7 @@ def print_sections(sections, uri_prefix)
   end
 end
 
+s_id = 1 # Must be JS safe.
 html = []
 html << html_page_top
 
@@ -204,6 +329,11 @@ unless sections.empty?
     html << html_heading(section[:date])
 
     section[:sub].each do |sub|
+      sub[:photos].each do |photo|
+        photo[:s_id] = s_id
+        s_id += 1
+      end
+
       html << html_tags(sub[:tags])
       html << html_photo_list(sub[:tags], sub[:photos])
     end
