@@ -1,0 +1,74 @@
+.lookthing {
+  position: fixed;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  top: 0em;
+  left: 0em;
+  right: 0em;
+  bottom: 0em;
+  height: 100%;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.90);
+}
+
+.lookthing-off {
+  display: none;
+}
+.lookthing-on {
+  display: flex;
+}
+
+.lookthing .canvas {
+  flex-grow: 1;
+  width: 100%;
+  background-size: contain, auto;
+  background-position: center, center;
+  background-repeat: no-repeat, no-repeat;
+}
+
+.lookthing .statusbar {
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.95);
+  color: #fff;
+}
+
+.lookthing .statusbar .title {
+  font-size: 1.1em;
+  text-align: center;
+  padding: 0.3em 0.3em 0em 0.3em;
+}
+
+.lookthing .statusbar .info {
+  padding: 0.3em 0.3em 0.3em 0.3em;
+  text-align: center;
+}
+
+.lookthing .statusbar .license {
+  font-size: 0.8em;
+  padding: 0.0em 0.3em 0em 0.3em;
+  text-align: center;
+}
+.lookthing .statusbar .license a {
+  margin: 0em 0.5em 0em 0.5em;
+}
+
+.lookthing .statusbar .nav {
+  text-align: right;
+}
+.lookthing .statusbar .nav a.button {
+  margin: 0em 0.25em 0em 0.25em;
+  padding: 0.25em;
+  text-align: center;
+  border: 0.05em solid #c8d6ff;
+  border-radius: 0.5em;
+  background-color: #e4ebff;
+  line-height: 2.5em;
+}
+
+.lookthing .statusbar a.on {
+  display: inline;
+}
+.lookthing .statusbar a.off {
+  display: none;
+}
