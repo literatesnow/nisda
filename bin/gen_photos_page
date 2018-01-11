@@ -225,7 +225,8 @@ unless sections.empty?
   sections.each do |section|
     html << html_heading(section[:date])
 
-    attribution_uri = "#{uri_prefix}#{section[:date]}"
+    attribution_name = 'Chris'
+    attribution_uri  = "https://www.nisda.net/photos/#{section[:date]}"
 
     section[:sub].each do |sub|
       html << html_tags(sub[:tags])
