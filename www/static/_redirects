@@ -15,5 +15,8 @@
 /watcher.php             /watcher.html                     302
 
 # Photo redirects for link sharing
-/photos/:year-:month-:day /photos.html                       302
-/photos/:year/:month/:day /photos-:year-:month.html#day-:day 302
+/photos/:year/:month/:day /photos-:year-:month.html#photos-:year-:month-:day 302
+
+# This worked by accident, I think this is being parsed as one placeholder
+# because they are parsed from the first slash to next slash (or end of URI)
+/photos/:year-:month-:day /photos.html 302
