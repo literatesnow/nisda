@@ -188,6 +188,7 @@ div.phototags span {
   border: 0.05em solid #c8d6ff;
   border-radius: 0.5em;
   background-color: #e4ebff;
+  line-height: 2em;
 }
 
 div.content > h3.photodate {
@@ -210,4 +211,6 @@ ul.photolist li a {
 ul.photolist img {
   display: block;
   margin: 0em 0.5em 0.5em 0em;
+  width: 12.5em;
+  height: 12.5em;
 }

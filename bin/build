@@ -28,7 +28,8 @@ copy_pepper() {
 
 gen_photo_html() {
   export PEPPER_FILE=$PEPPER_DIR/pepper.json
-  "$BASE_DIR/bin/gen_photos_page" > "$DIST_DIR/photos.html"
+  export PHOTO_HTML_DIR=$DIST_DIR
+  "$BASE_DIR/bin/gen_photos_page"
 }
 
 clean
