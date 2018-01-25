@@ -15,4 +15,5 @@
 /watcher.php             /watcher.html                     302
 
 # Photo redirects for link sharing
-/photos/:year-:month-:day /photos-:year-:month.html#day-:day 302
+/photos/:year-:month-:day /photos.html                       302
+/photos/:year/:month/:day /photos-:year-:month.html#day-:day 302
