@@ -169,8 +169,7 @@ class PhotoPage
              data-lookthing-attribution-name="#{CGI.escapeHTML attribution_name}"
              data-lookthing-attribution-uri="#{CGI.escapeHTML attribution_uri}">
             <img src="images/photos/thumbs/#{CGI.escapeHTML photo[:fileName]}"
-                 alt="#{CGI.escapeHTML desc}"
-                 style="photothumb">
+                 alt="#{CGI.escapeHTML desc}">
           </a>
         </li>
       HTML
