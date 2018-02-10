@@ -119,6 +119,12 @@ a:visited {
   padding: 0em 0.5em 0em 0em;
 }
 
+.screenshots {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
 .screenshot {
   margin: 0em;
   padding: 0em;
@@ -133,7 +139,7 @@ a:visited {
 }
 
 .qwshot {
-  margin: 0em;
+  margin: 0.5em;
   padding: 0em;
 }
 .qwshot img {
@@ -141,10 +147,6 @@ a:visited {
 }
 .qwshot .caption {
   font-style: italic;
-}
-.qwleft {
-  float: left;
-  margin: 0em 1em 0em 0em;
 }
 
 .oneup {
