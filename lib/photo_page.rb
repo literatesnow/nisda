@@ -2,10 +2,11 @@ require 'cgi'
 
 # Generates monthly photo page HTML.
 class PhotoPage
-  @sections = []
-
-  def initialize(sections)
-    @sections = sections
+  def initialize(sections, file_name, title, total)
+    @sections  = sections
+    @file_name = file_name
+    @title     = title
+    @total     = total
   end
 
   # {{{ html_page_top
@@ -18,10 +19,10 @@ class PhotoPage
         <meta http-equiv="content-type" content="text/html; charset=utf-8">
         <meta name="author" content="Chris">
         <meta name="generator" content="vim7">
-        <meta property="og:url" content="https://www.nisda.net/photos.html">
+        <meta property="og:url" content="https://www.nisda.net/#{CGI.escapeHTML @file_name}">
         <meta property="og:type" content="article">
-        <meta property="og:title" content="Photos">
-        <meta property="og:description" content="Latest photos.">
+        <meta property="og:title" content="Photos for #{CGI.escapeHTML @title}">
+        <meta property="og:description" content="Total photos: #{CGI.escapeHTML @total.to_s}">
         <meta property="og:image" content="https://www.nisda.net/images/landscape.png">
         <link rel="stylesheet" href="blip.css" type="text/css">
         <link rel="stylesheet" href="assets/lookthing/lookthing.css" type="text/css">

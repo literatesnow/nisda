@@ -16,11 +16,6 @@ class PhotoIndex
         <meta http-equiv="content-type" content="text/html; charset=utf-8">
         <meta name="author" content="Chris">
         <meta name="generator" content="vim7">
-        <meta property="og:url" content="https://www.nisda.net/photos.html">
-        <meta property="og:type" content="article">
-        <meta property="og:title" content="Photos">
-        <meta property="og:description" content="Latest photos.">
-        <meta property="og:image" content="https://www.nisda.net/images/landscape.png">
         <link rel="stylesheet" href="blip.css" type="text/css">
       </head>
 
