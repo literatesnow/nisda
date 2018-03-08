@@ -42,7 +42,11 @@ class PhotoPepper
   def most_recent_to_s
     year_month = @photos_by_year_month.keys.sort.last
     sections   = group_by_date_tags @photos_by_year_month[year_month]
-    return year_month_to_s sections.first
+    strs = []
+    sections.first(5).reverse.each do |section|
+      strs << year_month_to_s(section)
+    end
+    return strs.join
   end
 
   private
@@ -58,7 +62,6 @@ class PhotoPepper
       str << "\n"
     end
     str << "#{@uri_prefix}#{section[:date].gsub('-', '/')}\n" unless @uri_prefix.nil?
-    str << "\n"
     str
   end
 
