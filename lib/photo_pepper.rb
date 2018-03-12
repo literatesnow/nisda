@@ -61,7 +61,7 @@ class PhotoPepper
       str << sub[:tags].join(', ')
       str << "\n"
     end
-    str << "#{@uri_prefix}#{section[:date].gsub('-', '/')}\n" unless @uri_prefix.nil?
+    str << "#{@uri_prefix}/#{section[:date].gsub('-', '/')}\n"
     str
   end
 

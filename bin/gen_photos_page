@@ -3,19 +3,22 @@
 require_relative '../lib/photo_pepper'
 require_relative '../lib/photo_page'
 require_relative '../lib/photo_index'
+require_relative '../lib/env'
 
-photo_html_dir = ENV['PHOTO_HTML_DIR']
-pepper_file    = ENV['PEPPER_FILE']
-uri_prefix     = ENV['URI_PREFIX']
+photo_html_dir = Env.new('PHOTO_HTML_DIR').to_s
+pepper_file    = Env.new('PEPPER_FILE').to_s
+photo_uri      = Env.new('NISDA_PHOTO_URI').to_uri
+cdn_uri        = Env.new('CDN_URI').to_uri
 
-pepper = PhotoPepper.new pepper_file, uri_prefix
+pepper = PhotoPepper.new pepper_file, photo_uri
 pepper.parse
 
 page = PhotoIndex.new pepper.overview
 File.write "#{photo_html_dir}/photos.html", page.build_page
 
 pepper.overview.each do |over|
-  page = PhotoPage.new(pepper.photos(over[:year_month]),
+  page = PhotoPage.new(cdn_uri,
+                       pepper.photos(over[:year_month]),
                        over[:file_name],
                        over[:title],
                        over[:total])

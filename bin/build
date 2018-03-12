@@ -18,14 +18,6 @@ copy_static() {
   cp -R "$WWW_DIR"/static/* "$DIST_DIR"
 }
 
-copy_pepper() {
-  mkdir -p "$DIST_DIR/images/photos/"
-  cp "$PEPPER_DIR"/images/* "$DIST_DIR/images/photos/"
-
-  mkdir -p "$DIST_DIR/images/photos/thumbs/"
-  cp "$PEPPER_DIR"/thumbs/* "$DIST_DIR/images/photos/thumbs/"
-}
-
 gen_photo_html() {
   export PEPPER_FILE=$PEPPER_DIR/pepper.json
   export PHOTO_HTML_DIR=$DIST_DIR
@@ -35,5 +27,4 @@ gen_photo_html() {
 clean
 init
 copy_static
-copy_pepper
 gen_photo_html

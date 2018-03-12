@@ -2,7 +2,8 @@ require 'cgi'
 
 # Generates monthly photo page HTML.
 class PhotoPage
-  def initialize(sections, file_name, title, total)
+  def initialize(cdn_uri, sections, file_name, title, total)
+    @cdn_uri   = cdn_uri
     @sections  = sections
     @file_name = file_name
     @title     = title
@@ -120,7 +121,7 @@ class PhotoPage
         html << html_heading(section[:date])
 
         attribution_name = 'Chris'
-        attribution_uri  = "https://www.nisda.net/photos/#{section[:date]}"
+        attribution_uri  = "https://www.nisda.net/#{CGI.escapeHTML @file_name}"
 
         section[:sub].each do |sub|
           html << html_tags(sub[:tags])
@@ -163,13 +164,13 @@ class PhotoPage
 
       html << <<~HTML
         <li>
-          <a href="images/photos/#{CGI.escapeHTML photo[:fileName]}"
+          <a href="#{@cdn_uri}/images/#{CGI.escapeHTML photo[:fileName]}"
              data-lookthing="href"
              data-lookthing-title="#{CGI.escapeHTML title}"
              data-lookthing-desc="#{CGI.escapeHTML desc}"
              data-lookthing-attribution-name="#{CGI.escapeHTML attribution_name}"
              data-lookthing-attribution-uri="#{CGI.escapeHTML attribution_uri}">
-            <img src="images/photos/thumbs/#{CGI.escapeHTML photo[:fileName]}"
+            <img src="#{@cdn_uri}/thumbs/#{CGI.escapeHTML photo[:fileName]}"
                  alt="#{CGI.escapeHTML desc}">
           </a>
         </li>
