@@ -1,5 +1,5 @@
 ubuntu-*-console.log
-pepper/tags.txt
+pepper/*
 dist/*
 .vagrant/*
 .netlify
