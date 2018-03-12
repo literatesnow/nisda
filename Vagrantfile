@@ -17,7 +17,8 @@ Vagrant.configure('2') do |config|
     apt-get install -y ruby ruby-dev build-essential \
                        npm nodejs-legacy \
                        libjpeg-progs netpbm \
-                       jq
+                       jq \
+                       awscli
 
     echo "gem: --no-document --no-rdoc --no-ri" > /etc/gemrc
     gem install bundler
