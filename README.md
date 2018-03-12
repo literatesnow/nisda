@@ -23,7 +23,7 @@ Requirements for the first version of the photos page:
 * Images have a license
 * Title text on images
 
-TODO:
+#### Todo
 
 * Camera settings when image was taken
 * GPS co-ordinates of image
