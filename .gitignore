@@ -1,5 +1,7 @@
 ubuntu-*-console.log
-pepper/*
+pepper/images/*
+pepper/thumbs/*
+pepper/tags.txt
 dist/*
 .vagrant/*
 .netlify
