@@ -24,5 +24,8 @@ Vagrant.configure('2') do |config|
     gem install bundler
 
     npm install -g netlify-cli
+
+    echo 'cd /vagrant/' >> /home/ubuntu/.profile
+    echo 'aws configure --profile nisda-s3'
   SHELL
 end
