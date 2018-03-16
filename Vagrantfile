@@ -25,7 +25,10 @@ Vagrant.configure('2') do |config|
 
     npm install -g netlify-cli
 
-    echo 'cd /vagrant/' >> /home/ubuntu/.profile
+    echo 'export NISDA_PHOTO_URI=https://example.com/photos/' >> /home/vagrant/.profile
+    echo 'export CDN_URI=../pepper/'                          >> /home/vagrant/.profile
+    echo 'cd /vagrant/'                                       >> /home/vagrant/.profile
+
     echo 'aws configure --profile nisda-s3'
   SHELL
 end
