@@ -22,10 +22,11 @@ class PhotoPepper
     overview = []
     @photos_by_year_month.keys.sort.reverse.each do |year_month|
       overview << {
-        file_name: "photos-#{year_month}.html",
+        file_name:  "photos-#{year_month}.html",
         year_month: year_month,
         title:      DateTime.strptime(year_month, '%Y-%m').strftime('%B %Y'),
-        total:      @photos_by_year_month[year_month].length
+        total:      @photos_by_year_month[year_month].length,
+        all_tags:   group_by_month_tags(year_month)
       }
     end
     overview
@@ -35,13 +36,21 @@ class PhotoPepper
     group_by_date_tags @photos_by_year_month[year_month]
   end
 
+  def group_by_month_tags(year_month)
+    tags = []
+    photos(year_month).each do |section|
+      section[:sub].each { |sub| tags.concat sub[:tags] }
+    end
+    tags.uniq.join ', '
+  end
+
   def err_to_s
     @error_files.join "\n"
   end
 
   def most_recent_to_s
     year_month = @photos_by_year_month.keys.sort.last
-    sections   = group_by_date_tags @photos_by_year_month[year_month]
+    sections   = photos year_month
     strs = []
     sections.first(5).reverse.each do |section|
       strs << year_month_to_s(section)

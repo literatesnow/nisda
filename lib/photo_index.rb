@@ -95,6 +95,9 @@ class PhotoIndex
             #{CGI.escapeHTML over[:title]}:
             <a href="#{CGI.escapeHTML over[:file_name]}">#{CGI.escapeHTML over[:total].to_s} photos</a>
           </li>
+          <ul>
+            <li>#{CGI.escapeHTML over[:all_tags]}</li>
+          </ul>
         HTML
       end
       html << '</ul>'
