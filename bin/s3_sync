@@ -1,4 +1,0 @@
-#!/bin/sh
-
-aws --profile nisda-s3 s3 sync /vagrant/pepper/thumbs/ s3://cdn.tranquility.net.nz/nisda/thumbs/
-aws --profile nisda-s3 s3 sync /vagrant/pepper/images/ s3://cdn.tranquility.net.nz/nisda/images/

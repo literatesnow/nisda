@@ -1,0 +1,24 @@
+#!/bin/sh
+
+PREFIX=
+BASE_DIR=$(dirname "$0")/..
+
+WWW_DIR=$BASE_DIR/www
+PEPPER_DIR=$BASE_DIR/pepper
+DIST_DIR=$BASE_DIR/dist
+
+ENV_NISDA=$BASE_DIR/.env-nisda
+ENV_AWS=$BASE_DIR/.env-aws
+
+if ! docker ps > /dev/null 2>&1; then
+  PREFIX=sudo
+fi
+
+"$PREFIX" docker run -ti \
+                     --rm \
+                     -v "$(readlink -f "$WWW_DIR"):/opt/nisda/www:ro" \
+                     -v "$(readlink -f "$PEPPER_DIR"):/opt/nisda/pepper:ro" \
+                     -v "$(readlink -f "$DIST_DIR"):/opt/nisda/dist" \
+                     --env-file "$ENV_NISDA" \
+                     --env-file "$ENV_AWS" \
+                     nisda-net

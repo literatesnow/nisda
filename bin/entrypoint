@@ -1,0 +1,73 @@
+#!/bin/bash
+
+BASE_DIR=$(dirname "$0")/..
+
+init() {
+  check_target 'DIST_DIR'        || return 1
+  check_target 'PHOTO_HTML_DIR'  || return 1
+
+  check_target 'WWW_DIR'         || return 1
+  check_target 'PEPPER_FILE'     || return 1
+
+  check_target 'NISDA_PHOTO_URI' || return 1
+  check_target 'CDN_URI'         || return 1
+}
+
+clean() {
+  rm -rf "$DIST_DIR"/* > /dev/null 2>&1 || return 1
+}
+
+copy_static() {
+  cp -R "$WWW_DIR"/static/* "$DIST_DIR" || return 1
+}
+
+s3_sync() {
+  which aws > /dev/null 2>&1 || return 1
+  [ -n "$SKIP_S3_SYNC" ]     && return 1
+
+  check_target 'THUMBS_SRC_DIR' || return 1
+  check_target 'THUMBS_DST_URI' || return 1
+  check_target 'IMAGES_SRC_DIR' || return 1
+  check_target 'IMAGES_DST_URI' || return 1
+
+  echo "Sync $THUMBS_SRC_DIR to $THUMBS_DST_URI..."
+  aws s3 sync "$THUMBS_SRC_DIR/" "$THUMBS_DST_URI/"
+
+  echo "Sync $IMAGES_SRC_DIR to $IMAGES_DST_URI..."
+  aws s3 sync "$IMAGES_SRC_DIR/" "$IMAGES_DST_URI/"
+}
+
+gen_photo_html() {
+  "$BASE_DIR/bin/gen_photos_page" || return 1
+}
+
+check_target() {
+  local ENV_NAME=$1
+  local TARGET=${!ENV_NAME}
+
+  if [ -z "$TARGET" ]; then
+    echo "Env $ENV_NAME not set"
+    return 1
+  fi
+
+  case "$ENV_NAME" in
+    *_DIR)
+      if [ ! -d "$TARGET" ]; then
+        echo "Env $ENV_NAME not a directory: $TARGET"
+        return 1
+      fi
+    ;;
+    *_FILE)
+      if [ ! -e "$TARGET" ]; then
+        echo "Env $ENV_NAME not a file: $TARGET"
+        return 1
+      fi
+    ;;
+  esac
+}
+
+init           || exit 1
+clean          || exit 1
+s3_sync
+copy_static    || exit 1
+gen_photo_html || exit 1
