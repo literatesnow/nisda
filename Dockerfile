@@ -1,22 +1,20 @@
-FROM ruby:2.5
+FROM ruby:2.5-alpine
 
 ARG USER_UID=2000
 ARG USER_GID=2000
 
-RUN echo "Install apt" \
-  && export DEBIAN_FRONTEND=noninteractive \
-  && apt-get -y update \
-  && apt-get install -y --no-install-recommends \
-     libjpeg-progs netpbm jq awscli \
+RUN echo "Install packages" \
+  && apk --no-cache update \
+  && apk --no-cache add bash curl groff less shadow \
+                    python py-pip py-setuptools ca-certificates \
+  && pip --no-cache-dir install awscli \
   && echo "Create user" \
   && groupadd --gid "$USER_GID" nisda \
   && useradd -m --home /home/nisda --uid "$USER_UID" --gid nisda --shell /bin/bash nisda \
   && echo "Permissions" \
   && chown -R nisda:nisda /home/nisda/ \
   && echo "Cleaning up" \
-  && apt-get -y clean \
-  && apt-get --purge -y autoremove \
-  && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* \
+  && rm -rf /var/cache/apk/* /tmp/* /var/tmp/* \
   && echo "Done"
 
 COPY --chown=nisda:nisda . /opt/nisda/
