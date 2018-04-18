@@ -1,5 +1,6 @@
+dist/*
+!dist/.gitkeep
 pepper/*
 !pepper/pepper.json
-dist/*
 .netlify
 .env*
