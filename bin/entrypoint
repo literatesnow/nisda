@@ -38,6 +38,8 @@ s3_sync() {
 }
 
 gen_photo_html() {
+  [ -n "$DISABLE_PHOTOS_PAGE" ]   && return 0
+
   "$BASE_DIR/bin/gen_photos_page" || return 1
 }
 
