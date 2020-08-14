@@ -6,7 +6,8 @@ ARG USER_GID=2000
 RUN echo "Install packages" \
   && apk --no-cache update \
   && apk --no-cache add bash curl groff less shadow \
-                    python py-pip py-setuptools ca-certificates \
+                        python3 py-pip py-setuptools ca-certificates \
+                        ruby-json \
   && pip --no-cache-dir install awscli \
   && echo "Create user" \
   && groupadd --gid "$USER_GID" nisda \
