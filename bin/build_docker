@@ -9,12 +9,7 @@ if [ "$USER_UID" == "0" ]; then
   exit 1
 fi
 
-PREFIX=
-if ! docker ps > /dev/null 2>&1; then
-  PREFIX=sudo
-fi
-
-"$PREFIX" docker build -t nisda-net \
-                       --build-arg USER_UID="$USER_UID" \
-                       --build-arg USER_GID="$USER_GID" \
-                       "$BASE_DIR"
+docker build -t nisda-net \
+             --build-arg USER_UID="$USER_UID" \
+             --build-arg USER_GID="$USER_GID" \
+             "$BASE_DIR"
